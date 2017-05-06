@@ -1,8 +1,10 @@
+
 ##Requirements
 
 * php5.6 or higher
 * MySql
 * Composer
+
 ##PreInstall
 * Download and install **XAMPP** -> [Download](https://www.apachefriends.org/download.html)
 * Download and install **Composer** -> [Download](https://getcomposer.org/download/)
