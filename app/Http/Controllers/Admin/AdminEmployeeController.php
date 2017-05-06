@@ -46,8 +46,8 @@ class AdminEmployeeController extends Controller
 
     public function show($id) {
         $employee = Employee::find($id);
-        //TODO CompanyId
-        if ($employee->CompanyId != AdminHelper::getAdmin()->CompanyId) {
+
+        if (!AdminHelper::existInCompany($employee->Id)) {
             return redirect()->route('admin.employee.index');
         }
 
@@ -56,8 +56,8 @@ class AdminEmployeeController extends Controller
 
     public function edit($id) {
         $employee = Employee::find($id);
-        //TODO CompanyId
-        if ($employee->Id != AdminHelper::getAdmin()->Id) {
+
+        if (!AdminHelper::existInCompany($employee->Id)) {
             return redirect()->route('admin.employee.index');
         }
 
@@ -66,8 +66,8 @@ class AdminEmployeeController extends Controller
 
     public function update(Request $request, $id) {
         $employee = Employee::find($id);
-        //TODO CompanyId
-        if ($employee->Id != AdminHelper::getAdmin()->Id) {
+
+        if (!AdminHelper::existInCompany($employee->Id)) {
             return redirect()->route('admin.employee.index');
         }
 
