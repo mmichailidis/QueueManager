@@ -243,3 +243,14 @@ footer { background-color:#0c1a1e; min-height:350px; font-family: 'Open Sans', s
     50% { background-color: #A00; box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #441313 0 -1px 9px, rgba(255, 0, 0, 0.5) 0 2px 0;}
     to { background-color: #F00; }
 }
+
+
+.text-center {
+    text-align: left !important;
+}
+
+
+.jumbotron {
+    height: 500px;
+}
+
