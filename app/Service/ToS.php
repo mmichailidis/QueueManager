@@ -18,4 +18,11 @@ class ToS
     public static $LIVE_CHAT = 'LiveChat';
     public static $IN_PERSON = 'InPerson';
     public static $INVALID = 'invalid';
+
+    public static function getValues(){
+        return [
+            self::$IN_PERSON,
+            self::$LIVE_CHAT
+        ];
+    }
 }
