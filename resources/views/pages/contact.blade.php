@@ -2,14 +2,6 @@
 @section('title' , '| Eπικοινωνία')
 @section('content')
     <style>
-        h1,h2,h3 {
-            margin:0 0 25px 0;
-            font-family: 'Patua One', cursive;
-            fonr-size : 15px;
-            text-transform: uppercase;
-            letter-spacing:1px;
-        }
-
         p{
             margin:0 0 25px;
             font-size:18px;
@@ -22,7 +14,13 @@
             text-decoration:none;
             color:#26a5d3;
         }
-
+        .ContactFontSize{
+            margin:0 0 25px 0;
+            font-family: 'Patua One', cursive;
+            fonr-size : 15px;
+            text-transform: uppercase;
+            letter-spacing:1px;
+        }
         #contact{
             background:#333333;
             color:#f4f4f4;
@@ -40,23 +38,23 @@
                     <div class="panel-body">
                         <!-- Data for QueueManager to contact us -->
                         <!-- contact Form -->
-                        <h2>Επικοινωνήστε μαζί μας</h2>
+                        <h2 id="ContactFontSize">Επικοινωνήστε μαζί μας</h2>
                         <div class="row">
                             <div class="col-md-8 col-md-offset-2">
                                 <form class="form-horizontal">
                                     <div class="form-group">
-                                        <label for="exampleInputName2">Name</label>
-                                        <input type="text" class="form-control" id="exampleInputName2" placeholder="Το όναμα σας">
+                                        <label for="exampleInputName2">Όνομα:</label>
+                                        <input type="text" class="form-control" id="exampleInputName2" placeholder="Το όναμα σας.">
                                     </div>
                                     <div class="form-group">
-                                        <label for="exampleInputEmail2">Email</label>
-                                        <input type="email" class="form-control" id="exampleInputEmail2" placeholder="jane.doe@example.com">
+                                        <label for="exampleInputEmail2">Email:</label>
+                                        <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Το email σας.">
                                     </div>
                                     <div class="form-group ">
-                                        <label for="exampleInputText">Your Message</label>
-                                        <textarea  class="form-control" placeholder="Description"></textarea>
+                                        <label for="exampleInputText">Μήνυμα:</label>
+                                        <textarea  class="form-control" placeholder="Αφηστε μας να το μήνυμα σας..."></textarea>
                                     </div>
-                                    <button type="submit" class="btn btn-default">Send Message</button>
+                                    <button type="submit" class="btn btn-default">Αποστολή</button>
                                 </form>
                             </div>
                         </div>
