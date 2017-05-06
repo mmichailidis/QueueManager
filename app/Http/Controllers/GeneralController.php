@@ -15,9 +15,10 @@ class GeneralController extends Controller
     }
 
     public function show($categoryName) {
-        $query = ['CategoryId' => $categoryName];
+        $query = ['Name' => $categoryName];
+        $categoryId = Category::where($query)->first()->Id;
 
-        return view('categories.show')->with('companies',Company::where($query)->get());
+        return view('categories.show')->with('companies',Company::where(['CategoryId' => $categoryId])->get());
     }
 
     public function companyIndex($categoryName, $companyName) {
