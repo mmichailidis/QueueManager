@@ -11,51 +11,46 @@ use App\Http\Controllers\Controller;
 class AdminEmployeeController extends Controller
 {
     public function index() {
-        $employees = Employee::all();
-        return view('admin.employee.index')->with('employees', $employees)->with('data',AdminHelper::getEmployeeInfo($employees->Id));
+        $employees = AdminHelper::allEmployees();
+        $dataToReturn = [];
+
+        $dataMap = collect($employees)->map(function($employee) use ($dataToReturn) {
+            return AdminHelper::getEmployeeInfo($employee->Id);
+        });
+
+        for ($i = 0 ; $i < count($dataMap) ; $i++) {
+            $dataToReturn[$i] = [
+                'Employee' => $employees[$i],
+                'Data' => $dataMap[$i],
+            ];
+        }
+
+        return view('admin.employee.index')->with('data',$dataToReturn);
     }
 
     public function create() {
+        $employees = AdminHelper::allEmployees();
+        return view('admin.employee.index')->with('employees', $employees));
 
     }
 
-    public function store(Request $request) {
-        $employee = Employee::create([
-            'IsOnline' => $request->input('IsOnline'),
-            'JobId' => $request->input('JobId'),
-            'UserId' => $request->input('UserId')
-        ]);
+    public function store() {
 
-        return redirect()->route('admin.employee.show')->with('employee' , $employee->Id);
     }
 
     public function show($id) {
-        $employee = Employee::find($id);
-        dd(AdminHelper::getMemberInfo($employee->Id));
-        return view('admin.employee.show')->with('employee', $employee)->with('data', AdminHelper::getEmployeeInfo($employee->Id));
+
     }
 
     public function edit($id) {
-        $employee = Employee::find($id);
-        return view('admin.employee.edit')->with('employee', $employee);
+
     }
 
-    public function update(Request $request, $id) {
-        $employee = Employee::find($id);
+    public function update(Request $request) {
 
-        $employee->update([
-            'IsOnline' => $request->input('IsOnline'),
-            'JobId' => $request->input('JobId'),
-            'UserId' => $request->input('UserId')
-        ]);
-
-        return redirect()->route('admin.employee.show')->with('employee' , $employee->Id);
     }
 
     public function destroy($id) {
-        $employee = Employee::find($id);
-        $employee->delete();
 
-        return redirect()->route('admin.employee.index');
     }
 }
