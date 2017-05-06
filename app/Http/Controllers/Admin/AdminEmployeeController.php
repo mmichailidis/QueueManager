@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Employee;
+use App\User;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -30,6 +31,9 @@ class AdminEmployeeController extends Controller
             ->with('jobs',AdminHelper::allJobsAsArray());
     }
 
+    /**
+     * 8elei data gia ton user
+     */
     public function create() {
         $employees = AdminHelper::allEmployees();
         return view('admin.employee.index')
@@ -38,10 +42,16 @@ class AdminEmployeeController extends Controller
     }
 
     public function store(Request $request) {
+        $user = User::create([
+            'name' => $request->input('name'),
+            'email' => $request->input('email'),
+            'password' => bcrypt($request->input('password'))
+        ]);
+
         $employee = Employee::create([
-            'IsOnline' => $request->input('IsOnline'),
+            'IsOnline' => 0,
             'JobId' => $request->input('JobId'),
-            'UserId' => $request->input('UserId')
+            'UserId' => $user->id
         ]);
 
         return redirect()->route('admin.employee.show', $employee->Id);
@@ -57,34 +67,33 @@ class AdminEmployeeController extends Controller
         return view('admin.employee.show')
             ->with('employee', AdminHelper::getEmployeeInfo($employee));
     }
-
-    public function edit($id) {
-        $employee = Employee::find($id);
-
-        if (!AdminHelper::existInCompany($employee->Id)) {
-            return redirect()->route('admin.employee.index');
-        }
-
-        return route('admin.employee.edit')
-            ->with('employee', $employee)
-            ->with('jobs',AdminHelper::allJobs());
-    }
-
-    public function update(Request $request, $id) {
-        $employee = Employee::find($id);
-
-        if (!AdminHelper::existInCompany($employee->Id)) {
-            return redirect()->route('admin.employee.index');
-        }
-
-        $employee->update([
-            'IsOnline' => $request->input('IsOnline'),
-            'JobId' => $request->input('JobId'),
-            'UserId' => $request->input('UserId')
-        ]);
-
-        return view('admin.employee.index')->with('employee', AdminHelper::getEmployeeInfo($employee));
-    }
+//
+//    public function edit($id) {
+//        $employee = Employee::find($id);
+//
+//        if (!AdminHelper::existInCompany($employee->Id)) {
+//            return redirect()->route('admin.employee.index');
+//        }
+//
+//        return route('admin.employee.edit')
+//            ->with('employee', $employee)
+//            ->with('jobs',AdminHelper::allJobs());
+//    }
+//
+//    public function update(Request $request, $id) {
+//        $employee = Employee::find($id);
+//
+//        if (!AdminHelper::existInCompany($employee->Id)) {
+//            return redirect()->route('admin.employee.index');
+//        }
+//
+//        $employee->update([
+//            'IsOnline' => $request->input('IsOnline'),
+//            'JobId' => $request->input('JobId'),
+//        ]);
+//
+//        return view('admin.employee.index')->with('employee', AdminHelper::getEmployeeInfo($employee));
+//    }
 
     public function destroy($id) {
         $employee = Employee::find($id);

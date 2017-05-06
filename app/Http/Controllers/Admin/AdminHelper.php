@@ -1,13 +1,6 @@
 <?php
-/**
- * Created by IntelliJ IDEA.
- * User: MidoriKage
- * Date: 06-May-17
- * Time: 1:24 PM
- */
 
 namespace App\Http\Controllers\Admin;
-
 
 use App\Admin;
 use App\Company;
@@ -19,6 +12,9 @@ use Illuminate\Support\Facades\Auth;
 
 class AdminHelper
 {
+    /**
+     * @return Admin
+     */
     static function getAdmin()
     {
         $query = ['UserId' => Auth::getUser()->id];
@@ -26,11 +22,17 @@ class AdminHelper
         return Admin::where($query)->first();
     }
 
+    /**
+     * @return Company
+     */
     static function myCompany()
     {
         return Company::find(self::getAdmin()->CompanyId);
     }
 
+    /**
+     * @return Job
+     */
     static function allJobs()
     {
         $query = ['CompanyId' => self::getAdmin()->CompanyId];
@@ -62,12 +64,20 @@ class AdminHelper
         return $toReturn;
     }
 
+    /**
+     * @param $employeeId
+     * @return bool
+     */
     static function existInCompany($employeeId) {
         $job = Job::find(Employee::find($employeeId)->JobId);
 
         return $job->CompanyId == self::getAdmin()->CompanyId;
     }
 
+    /**
+     * @param $employeeId
+     * @return array
+     */
     static function getEmployeeInfo($employeeId){
         $employee = Employee::find($employeeId);
         $user = User::find($employee->UserId);
@@ -78,6 +88,10 @@ class AdminHelper
         ];
     }
 
+    /**
+     * @param $memberId
+     * @return array
+     */
     static function getMemberInfo($memberId){
         $member = Member::find($memberId);
         $user = User::find($member->UserId);

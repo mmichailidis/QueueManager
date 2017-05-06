@@ -32,7 +32,6 @@
                     <li><a href="{{route('auth.login')}}">Login</a></li>
                     <li><a href="{{route('auth.register')}}"><p class="navbar-btn"><button type="button" class="btn btn-success">Εγγραφή <span class="glyphicon glyphicon-log-in"></span></button> &nbsp;</p></a></li>
                 @else
-
                     @if(\App\Http\Controllers\Helpers::isAdmin())
                         <li><a href="{{route('admin.employee.index')}}">Εργαζόμενοι</a></li>
                         @if(\App\Http\Controllers\Helpers::isVerificationRequired())
