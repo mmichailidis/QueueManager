@@ -28,38 +28,37 @@ $this->group(['middleware' => 'auth'], function () {
 
     $this->group(['middleware' => 'admin'], function () {
         $this->group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
-//            $this->get('/', ['as' => 'admin.show', 'uses' => 'AdminController@show']);
-//            $this->put('/', ['as' => 'admin.update', 'uses' => 'AdminController@update']);
-//            $this->get('/edit', ['as' => 'admin.edit', 'uses' => 'AdminController@edit']);
-//
-//
-//            $this->group(['prefix' => 'jobs'], function () {
-//                $this->get('/', ['as' => 'admin.job.index', 'uses' => 'AdminJobController@index']);
-//                $this->get('/create', ['as' => 'admin.job.create', 'uses' => 'AdminJobController@create']);
-//                $this->post('/', ['as' => 'admin.job.store', 'uses' => 'AdminJobController@store']);
-//                $this->get('/{jobId}', ['as' => 'admin.job.show', 'uses' => 'AdminJobController@show']);
-//                $this->get('/{jobId}/edit', ['as' => 'admin.job.edit', 'uses' => 'AdminJobController@edit']);
-//                $this->put('/{jobId}', ['as' => 'admin.job.update', 'uses' => 'AdminJobController@update']);
-//                $this->delete('/{jobId}', ['as' => 'admin.job.destroy', 'uses' => 'AdminJobController@destroy']);
-//            });
-//
-//            $this->group(['prefix' => 'employee'], function () {
-//                $this->get('/', ['as' => 'admin.employee.index', 'uses' => 'AdminEmployeeController@index']);
-//                $this->get('/create', ['as' => 'admin.employee.create', 'uses' => 'AdminEmployeeController@create']);
-//                $this->post('/', ['as' => 'admin.employee.store', 'uses' => 'AdminEmployeeController@store']);
-//                $this->get('/{employeeId}', ['as' => 'admin.employee.show', 'uses' => 'AdminEmployeeController@show']);
-//                $this->get('/{employeeId}/edit', ['as' => 'admin.employee.edit', 'uses' => 'AdminEmployeeController@edit']);
-//                $this->put('/{employeeId}', ['as' => 'admin.employee.update', 'uses' => 'AdminEmployeeController@update']);
-//                $this->delete('/{employeeId}', ['as' => 'admin.employee.destroy', 'uses' => 'AdminEmployeeController@destroy']);
-//            });
-//
-//            $this->group(['prefix' => 'member'], function () {
-//                $this->get('/', ['as' => 'admin.member.index', 'uses' => 'AdminMemberController@index']);
-//                $this->get('/create', ['as' => 'admin.member.create', 'uses' => 'AdminMemberController@create']);
-//                $this->post('/', ['as' => 'admin.member.store', 'uses' => 'AdminMemberController@store']);
-//                $this->get('/{verificationId}', ['as' => 'admin.member.show', 'uses' => 'AdminMemberController@show']);
-//                $this->delete('/{verificationId}', ['as' => 'admin.member.destroy', 'uses' => 'AdminMemberController@destroy']);
-//            });
+            $this->get('/', ['as' => 'admin.show', 'uses' => 'AdminController@show']);
+            $this->put('/', ['as' => 'admin.update', 'uses' => 'AdminController@update']);
+            $this->get('/edit', ['as' => 'admin.edit', 'uses' => 'AdminController@edit']);
+
+            $this->group(['prefix' => 'jobs'], function () {
+                $this->get('/', ['as' => 'admin.job.index', 'uses' => 'AdminJobController@index']);
+                $this->get('/create', ['as' => 'admin.job.create', 'uses' => 'AdminJobController@create']);
+                $this->post('/', ['as' => 'admin.job.store', 'uses' => 'AdminJobController@store']);
+                $this->get('/{jobId}', ['as' => 'admin.job.show', 'uses' => 'AdminJobController@show']);
+                $this->get('/{jobId}/edit', ['as' => 'admin.job.edit', 'uses' => 'AdminJobController@edit']);
+                $this->put('/{jobId}', ['as' => 'admin.job.update', 'uses' => 'AdminJobController@update']);
+                $this->delete('/{jobId}', ['as' => 'admin.job.destroy', 'uses' => 'AdminJobController@destroy']);
+            });
+
+            $this->group(['prefix' => 'employee'], function () {
+                $this->get('/', ['as' => 'admin.employee.index', 'uses' => 'AdminEmployeeController@index']);
+                $this->get('/create', ['as' => 'admin.employee.create', 'uses' => 'AdminEmployeeController@create']);
+                $this->post('/', ['as' => 'admin.employee.store', 'uses' => 'AdminEmployeeController@store']);
+                $this->get('/{employeeId}', ['as' => 'admin.employee.show', 'uses' => 'AdminEmployeeController@show']);
+                $this->get('/{employeeId}/edit', ['as' => 'admin.employee.edit', 'uses' => 'AdminEmployeeController@edit']);
+                $this->put('/{employeeId}', ['as' => 'admin.employee.update', 'uses' => 'AdminEmployeeController@update']);
+                $this->delete('/{employeeId}', ['as' => 'admin.employee.destroy', 'uses' => 'AdminEmployeeController@destroy']);
+            });
+
+            $this->group(['prefix' => 'member'], function () {
+                $this->get('/', ['as' => 'admin.member.index', 'uses' => 'AdminMemberController@index']);
+                $this->get('/create', ['as' => 'admin.member.create', 'uses' => 'AdminMemberController@create']);
+                $this->post('/', ['as' => 'admin.member.store', 'uses' => 'AdminMemberController@store']);
+                $this->get('/{verificationId}', ['as' => 'admin.member.show', 'uses' => 'AdminMemberController@show']);
+                $this->delete('/{verificationId}', ['as' => 'admin.member.destroy', 'uses' => 'AdminMemberController@destroy']);
+            });
 
         });
     });
