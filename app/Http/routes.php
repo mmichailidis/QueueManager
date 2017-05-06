@@ -47,8 +47,8 @@ $this->group(['middleware' => 'auth'], function () {
                 $this->get('/create', ['as' => 'admin.employee.create', 'uses' => 'AdminEmployeeController@create']);
                 $this->post('/', ['as' => 'admin.employee.store', 'uses' => 'AdminEmployeeController@store']);
                 $this->get('/{employeeId}', ['as' => 'admin.employee.show', 'uses' => 'AdminEmployeeController@show']);
-                $this->get('/{employeeId}/edit', ['as' => 'admin.employee.edit', 'uses' => 'AdminEmployeeController@edit']);
-                $this->put('/{employeeId}', ['as' => 'admin.employee.update', 'uses' => 'AdminEmployeeController@update']);
+//                $this->get('/{employeeId}/edit', ['as' => 'admin.employee.edit', 'uses' => 'AdminEmployeeController@edit']);
+//                $this->put('/{employeeId}', ['as' => 'admin.employee.update', 'uses' => 'AdminEmployeeController@update']);
                 $this->delete('/{employeeId}', ['as' => 'admin.employee.destroy', 'uses' => 'AdminEmployeeController@destroy']);
             });
 

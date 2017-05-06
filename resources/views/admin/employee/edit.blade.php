@@ -1,1 +1,1 @@
-<?php
+<!-- den tha ginete edite-->
