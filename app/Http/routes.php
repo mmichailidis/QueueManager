@@ -12,13 +12,13 @@ $this->group(['middleware' => 'auth'], function () {
 
     $this->group(['middleware' => 'employee'], function () {
         $this->group(['namespace' => 'Employee', 'prefix' => 'employee'], function () {
-//            $this->get('profile', ['as' => 'employee.profile', 'uses' => 'EmployeeController@myProfile']);
-//            $this->get('overview', ['as' => 'employee.overview', 'uses' => 'EmployeeController@myJob']);
-//            $this->get('work', ['as' => 'employee.work', 'uses' => 'EmployeeController@work']);
-//
-//            $this->post('inner/number', ['as' => 'employee.getNumber', 'uses' => 'EmployeeController@getNumber']);
-//            $this->get('inner/chat', ['as' => 'employee.getChat', 'uses' => 'EmployeeController@getChatHistory']);
-//            $this->post('inner/chat', ['as' => 'employee.post', 'uses' => 'EmployeeController@postMessage']);
+            $this->get('profile', ['as' => 'employee.profile', 'uses' => 'EmployeeController@myProfile']);
+            $this->get('overview', ['as' => 'employee.overview', 'uses' => 'EmployeeController@myJob']);
+            $this->get('work', ['as' => 'employee.work', 'uses' => 'EmployeeController@work']);
+
+            $this->post('inner/number', ['as' => 'employee.getNumber', 'uses' => 'EmployeeController@getNumber']);
+            $this->get('inner/chat', ['as' => 'employee.getChat', 'uses' => 'EmployeeController@getChatHistory']);
+            $this->post('inner/chat', ['as' => 'employee.post', 'uses' => 'EmployeeController@postMessage']);
 
 //            $this->get('inner/number',['as' => 'employee.getNumber' , 'uses' => 'EmployeeController@getNumber']); //TEST ROUTE
 //            $this->get('inner/chat',['as' => 'employee.getChat' , 'uses' => 'EmployeeController@getChatHistory']); //TEST ROUTE
@@ -64,13 +64,13 @@ $this->group(['middleware' => 'auth'], function () {
     });
 
     $this->group(['namespace' => 'Member', 'prefix' => 'member'], function () {
-//        $this->post('number', ['as' => 'member.request.number', 'uses' => 'MemberController@requestTicket']);
-//        $this->get('ticket/{ticketId}', ['as' => 'member.ticket.show', 'uses' => 'MemberController@show']);
-//        $this->delete('ticket/{ticketId}', ['as' => 'member.ticket.destroy', 'uses' => 'MemberController@destroy']);
-//
-//        $this->get('/', ['as' => 'member.profile', 'uses' => 'MemberController@myProfile']);
-//        $this->get('/edit', ['as' => 'member.edit', 'uses' => 'MemberController@edit']);
-//        $this->put('/', ['as' => 'member.update', 'uses' => 'MemberController@update']);
+        $this->post('number', ['as' => 'member.request.number', 'uses' => 'MemberController@requestTicket']);
+        $this->get('ticket/{ticketId}', ['as' => 'member.ticket.show', 'uses' => 'MemberController@show']);
+        $this->delete('ticket/{ticketId}', ['as' => 'member.ticket.destroy', 'uses' => 'MemberController@destroy']);
+
+        $this->get('/', ['as' => 'member.profile', 'uses' => 'MemberController@myProfile']);
+        $this->get('/edit', ['as' => 'member.edit', 'uses' => 'MemberController@edit']);
+        $this->put('/', ['as' => 'member.update', 'uses' => 'MemberController@update']);
     });
 //    $this->group(['prefix' => '/show/{categoryName}/{companyName}'], function () {
 //        $this->get('/chat', ['as' => 'company.chat', 'uses' => 'ChatController@index']);

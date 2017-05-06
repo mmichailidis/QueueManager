@@ -9,5 +9,28 @@ use App\Http\Controllers\Controller;
 
 class EmployeeController extends Controller
 {
-    //
+    public function myProfile() {
+
+    }
+
+    public function myJob() {
+
+    }
+
+    public function work() {
+
+    }
+
+    public function getNumber() {
+
+    }
+
+    public function getCharHistory() {
+
+    }
+
+    public function postMessage() {
+
+    }
+
 }
