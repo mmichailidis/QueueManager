@@ -40,6 +40,19 @@ class AdminHelper
         return Job::where($query)->get();
     }
 
+    static function allJobsAsArray()
+    {
+        $query = ['CompanyId' => self::getAdmin()->CompanyId];
+        $jobs = Job::where($query)->get();
+        $toReturn = array();
+
+        foreach($jobs as $job) {
+            $toReturn[$job->Id] = $job;
+        }
+
+        return $toReturn;
+    }
+
     static function allEmployees()
     {
         $toReturn = Employee::all();
