@@ -25,13 +25,16 @@ class AdminEmployeeController extends Controller
             ];
         }
 
-        return view('admin.employee.index')->with('data',$dataToReturn);
+        return view('admin.employee.index')
+            ->with('data',$dataToReturn)
+            ->with('jobs',AdminHelper::allJobs());
     }
 
     public function create() {
         $employees = AdminHelper::allEmployees();
-        return view('admin.employee.index')->with('employees', $employees)->with('jobs', AdminHelper::allJobs());
-
+        return view('admin.employee.index')
+            ->with('employees', $employees)
+            ->with('jobs', AdminHelper::allJobs());
     }
 
     public function store(Request $request) {
@@ -51,7 +54,8 @@ class AdminEmployeeController extends Controller
             return redirect()->route('admin.employee.index');
         }
 
-        return view('admin.employee.show')->with('employee', AdminHelper::getEmployeeInfo($employee));
+        return view('admin.employee.show')
+            ->with('employee', AdminHelper::getEmployeeInfo($employee));
     }
 
     public function edit($id) {
@@ -61,7 +65,9 @@ class AdminEmployeeController extends Controller
             return redirect()->route('admin.employee.index');
         }
 
-        return route('admin.employee.edit')->with('employee', $employee);
+        return route('admin.employee.edit')
+            ->with('employee', $employee)
+            ->with('jobs',AdminHelper::allJobs());
     }
 
     public function update(Request $request, $id) {
@@ -82,6 +88,11 @@ class AdminEmployeeController extends Controller
 
     public function destroy($id) {
         $employee = Employee::find($id);
+
+        if (!AdminHelper::existInCompany($employee->Id)) {
+            return redirect()->route('admin.employee.index');
+        }
+
         $employee->delete();
 
         return redirect()->route('admin.employee.index');
