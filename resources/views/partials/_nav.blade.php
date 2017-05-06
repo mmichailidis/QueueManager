@@ -1,6 +1,6 @@
-<nav class="navbar navbar-default navbar-static-top">
-    <div class="container">
-        <div class="navbar-header">
+<nav class="navbar navbar-default navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header page-scroll">
 
             <!-- Collapsed Hamburger -->
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
@@ -25,11 +25,9 @@
             <!-- Right Side Of Navbar -->
             <ul class="nav navbar-nav navbar-right">
                 <!-- Authentication Links -->
-                <ul class="nav navbar-nav">
                     <li><a href="{{ url('/home') }}">Αρχική</a></li>
                     <li><a href="{{ url('/about') }}">Σχετικά</a></li>
                     <li><a href="{{ url('/contact') }}">Επικοινωνία</a></li>
-                </ul>
                 @if (Auth::guest())
                     <li><a href="{{ url('/login') }}">Login</a></li>
                     <li><a href="{{ url('/register') }}">Register</a></li>
