@@ -4,7 +4,7 @@
 
 {{--{{ dd($data, $jobs) }}--}}
 {{--IsOnline, Se poio job einai (apo JobId), CurrentNumber, NumberStatus--}}
-</br></br>
+<br><br>
 <h2 style="margin-left:70px;">Εργαζόμενοι</h2>
 <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
 <div class="container">
@@ -53,11 +53,6 @@
         </div>
     </div>
 </div>
-
-
-
-
-
 @endsection
 
 @section('extraScript')
