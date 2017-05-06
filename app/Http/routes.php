@@ -82,9 +82,10 @@ $this->group(['middleware' => 'auth'], function () {
 //    });
 });
 
-//$this->get('contact', ['as' => 'contact.index', 'uses' => 'ContactController@index']);
-//
-//$this->get('/', ['as' => 'categories.index', 'uses' => 'GeneralController@index']);
-//$this->get('/show/{categoryName}', ['as' => 'categories.show', 'uses' => 'GeneralController@show']);
-//$this->get('/show/{categoryName}/{companyName}', ['as' => 'company.index', 'uses' => 'GeneralController@companyIndex']);
+$this->get('contact', ['as' => 'contact.index', 'uses' => 'ContactController@index']);
+$this->get('about', ['as' => 'contact.about', 'uses' => 'ContactController@about']);
+
+$this->get('/', ['as' => 'categories.index', 'uses' => 'GeneralController@index']);
+$this->get('/show/{categoryName}', ['as' => 'categories.show', 'uses' => 'GeneralController@show']);
+$this->get('/show/{categoryName}/{companyName}', ['as' => 'company.index', 'uses' => 'GeneralController@companyIndex']);
 
