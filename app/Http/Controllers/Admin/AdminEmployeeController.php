@@ -36,7 +36,7 @@ class AdminEmployeeController extends Controller
      */
     public function create() {
         $employees = AdminHelper::allEmployees();
-        return view('admin.employee.index')
+        return view('admin.employee.create')
             ->with('employees', $employees)
             ->with('jobs', AdminHelper::allJobs());
     }
@@ -51,7 +51,8 @@ class AdminEmployeeController extends Controller
         $employee = Employee::create([
             'IsOnline' => 0,
             'JobId' => $request->input('JobId'),
-            'UserId' => $user->id
+            'UserId' => $user->id,
+            'NumberStatus' => "DONE"
         ]);
 
         return redirect()->route('admin.employee.show', $employee->Id);
@@ -65,7 +66,7 @@ class AdminEmployeeController extends Controller
         }
 
         return view('admin.employee.show')
-            ->with('employee', AdminHelper::getEmployeeInfo($employee));
+            ->with('employee', AdminHelper::getEmployeeInfo($employee->Id));
     }
 //
 //    public function edit($id) {
