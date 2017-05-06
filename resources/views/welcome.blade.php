@@ -5,7 +5,7 @@
     </head>
     <body>
         @include('partials._nav')
-        <div>
+        <div class="container">
             @yield('content')
             @include('partials._footer')
         </div>
