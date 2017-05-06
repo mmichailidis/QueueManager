@@ -1,11 +1,11 @@
 <?php
 
 $this->group(['namespace' => 'Auth'], function () {
-//    $this->get('login', ['as' => 'auth.login', 'uses' => 'AuthController@getLogin']);
-//    $this->post('login', ['as' => 'auth.login', 'uses' => 'AuthController@postLogin']);
-//    $this->get('logout', ['as' => 'auth.logout', 'uses' => 'AuthController@logout']);
-//    $this->get('register', ['as' => 'auth.register', 'uses' => 'AuthController@showRegistrationForm']);
-//    $this->post('register', ['as' => 'auth.register', 'uses' => 'AuthController@register']);
+    $this->get('login', ['as' => 'auth.login', 'uses' => 'AuthController@getLogin']);
+    $this->post('login', ['as' => 'auth.login', 'uses' => 'AuthController@postLogin']);
+    $this->get('logout', ['as' => 'auth.logout', 'uses' => 'AuthController@logout']);
+    $this->get('register', ['as' => 'auth.register', 'uses' => 'AuthController@showRegistrationForm']);
+    $this->post('register', ['as' => 'auth.register', 'uses' => 'AuthController@register']);
 });
 
 $this->group(['middleware' => 'auth'], function () {

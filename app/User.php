@@ -4,6 +4,12 @@ namespace App;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
+/**
+ * @property mixed name
+ * @property mixed email
+ * @property mixed password
+ * @property mixed id
+ */
 class User extends Authenticatable
 {
     /**
