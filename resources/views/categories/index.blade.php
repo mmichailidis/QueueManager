@@ -11,7 +11,6 @@
 
         <section class="slick-content">
             <h3>Επιλέξτε παρακάτω την υπηρεσία από την οποία επιθυμείτε να πάρετε ηλεκτονικά το νούμερο σας...</h3>
-
             <div class="slider">
             @foreach($categories as $category)
                 @if($category->TypeOfCategory == 0)

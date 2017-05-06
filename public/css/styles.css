@@ -24,10 +24,11 @@
     left: 0;
     width:100%;
 }
+
 body {
-    /*margin: 0px !important;*/
-    /*padding: 0px !important;*/
+    padding-top: 70px;
 }
+
 
 .container {
     /*margin: 50;*/

@@ -20,7 +20,7 @@
                     </div>
 
                     <div class="details col-md-6">
-                        <h3 class="product-title">Queue Manager</h3>
+                        <h2 class="product-title">Queue Manager</h2>
                         <div class="rating">
                             <div class="stars">
                                 <!--stars-->
