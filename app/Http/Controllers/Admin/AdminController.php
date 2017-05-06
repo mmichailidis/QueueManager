@@ -22,13 +22,9 @@ class AdminController extends Controller
 
     }
 
-<<<<<<< HEAD
     public function update(Request $request)
     {
         $company = AdminHelper::myCompany();
-=======
-    public function update(Request $request) {
->>>>>>> e260f36633ad44476b0b26e5fccbf140b51084a4
 
         $company->update([
             'Name' => $request->input('Name'),
