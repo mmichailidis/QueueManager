@@ -11,19 +11,14 @@
 
         <section class="slick-content">
             <h3>Επιλέξτε παρακάτω την υπηρεσία από την οποία επιθυμείτε να πάρετε ηλεκτονικά το νούμερο σας...</h3>
+
             <div class="slider">
-                <div><div class="slide-h3">
-                        <a href="welcome.blade.php"><img src="pictures/bag.png" alt="" style="width:130px; height:130px;">
-                        </a><h4>&#160;&#160;&#160;&#160;&#160;&#160;ΓΙΑΤΡΟΙ</h4></div></div>
-                <div><div class="slide-h3">
-                        <a href="welcome.blade.php"><img src="pictures/Bank.png" alt="" style="width:130px; height:130px;">
-                        </a><h4>&#160;&#160;&#160;&#160;ΤΡΑΠΕΖΕΣ</h4></div></div>
-                <div><div class="slide-h3">
-                        <a href="welcome.blade.php"><img src="pictures/eforia.png" alt="" style="width:130px; height:130px;">
-                        </a><h4>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;ΕΦΟΡΙΑ</h4></div></div>
-                <div><div class="slide-h3">
-                        <a href="welcome.blade.php"><img src="pictures/ika.png" alt="" style="width:130px; height:130px;">
-                        </a><h4>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;ΙΚΑ</h4></div></div>
+            @foreach($categories as $category)
+                    <div><div class="slide-h3">
+                            <a href="{{route('categories.show' , $category->Name)}}"><img src="{{URL::asset($category->Photo)}}" alt="" style="width:130px; height:130px;">
+                            </a><h4>&#160;&#160;&#160;&#160;&#160;&#160;{{$category->Name}}</h4></div></div>
+            @endforeach
+
             </div>
         </section>
     </div>
