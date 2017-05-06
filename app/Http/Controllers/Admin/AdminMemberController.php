@@ -10,7 +10,11 @@ use App\Http\Controllers\Controller;
 class AdminMemberController extends Controller
 {
     public function index() {
+        $company = AdminHelper::myCompany();
 
+        if(!$company->VerificationRequired) {
+            return redirect()->route('admin.show');
+        }
     }
 
     public function create() {
