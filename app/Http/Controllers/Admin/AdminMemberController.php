@@ -27,20 +27,36 @@ class AdminMemberController extends Controller
             array_push($membersData, AdminHelper::getMemberInfo($single->MemberId));
         }
 
-        dd($membersData);
-
         return view('admin.member.index')->with('members', $membersData);
     }
 
     public function create()
     {
+        $company = AdminHelper::myCompany();
 
+        if(!$company->VerificationRequired) {
+            return redirect()->route('admin.show');
+        }
+
+        return view('admin.member.create');
     }
 
-    public function store()
+    public function store(Request $request)
     {
+        $company = AdminHelper::myCompany();
 
+        if(!$company->VerificationRequired) {
+            return redirect()->route('admin.show');
+        }
+
+        $ver = Verification::create([
+            'MemberId' => $request->input('MemberId'),
+            'CompanyId' => $company->Id,
+        ]);
+
+        return redirect()->route('admin.member.show' , $ver->Id);
     }
+
     public function show($id) {
         $company = AdminHelper::myCompany();
 
