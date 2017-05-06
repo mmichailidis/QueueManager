@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Employee;
+use App\User;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -30,6 +31,9 @@ class AdminEmployeeController extends Controller
             ->with('jobs',AdminHelper::allJobsAsArray());
     }
 
+    /**
+     * 8elei data gia ton user
+     */
     public function create() {
         $employees = AdminHelper::allEmployees();
         return view('admin.employee.index')
@@ -38,10 +42,16 @@ class AdminEmployeeController extends Controller
     }
 
     public function store(Request $request) {
+        $user = User::create([
+            'name' => $request->input('name'),
+            'email' => $request->input('email'),
+            'password' => bcrypt($request->input('password'))
+        ]);
+
         $employee = Employee::create([
-            'IsOnline' => $request->input('IsOnline'),
+            'IsOnline' => 0,
             'JobId' => $request->input('JobId'),
-            'UserId' => $request->input('UserId')
+            'UserId' => $user->id
         ]);
 
         return redirect()->route('admin.employee.show', $employee->Id);
