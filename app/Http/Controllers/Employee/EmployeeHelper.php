@@ -23,9 +23,7 @@ class EmployeeHelper
     }
 
     static function getJob() {
-        $query = ['CompanyId' => self::getEmployee()->JobId];
-
-        return Job::where($query)->get();
+        return Job::find(self::getEmployee()->JobId);
     }
 
     static function getEmployeeInfo() {
