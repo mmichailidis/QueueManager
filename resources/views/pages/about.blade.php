@@ -19,8 +19,6 @@
                         </div>
                     </div>
 
-
-
                     <div class="details col-md-6">
                         <h3 class="product-title">Queue Manager</h3>
                         <div class="rating">
