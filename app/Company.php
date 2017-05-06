@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * @property mixed Id
+ * @property mixed Name
  * @property mixed CategoryId
  * @property mixed AutoProceedActivated
  * @property mixed AutoProceedTime
@@ -22,6 +23,7 @@ class Company extends Model
     protected $table = 'companies';
 
     protected $fillable = [
+        'Name',
         'CategoryId',
         'AutoProceedActivated',
         'AutoProceedTime',

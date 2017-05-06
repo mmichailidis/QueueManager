@@ -14,6 +14,7 @@ class CreateCompaniesTable extends Migration
     {
         Schema::create('companies', function (Blueprint $table) {
             $table->increments('Id');
+            $table->string('Name');
             $table->integer('CategoryId')->unsigned();
             $table->foreign('CategoryId')->references('Id')->on('categories')->onDelete('cascade');
             $table->boolean('AutoProceedActivated')->default(true);
