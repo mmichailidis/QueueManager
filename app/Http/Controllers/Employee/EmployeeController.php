@@ -40,7 +40,7 @@ class EmployeeController extends Controller
     }
 
     //API
-    public function getCharHistory() {
+    public function getChatHistory() {
 
     }
 
