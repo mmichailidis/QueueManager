@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Employee;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -10,7 +11,10 @@ use App\Http\Controllers\Controller;
 class AdminEmployeeController extends Controller
 {
     public function index() {
-
+        $employees = Employee::all();
+        dd($employees);
+        dd(AdminHelper::getMemberInfo($employees->Id));
+        return view('admin.employee.index')->with('employees', $employees)->with('data',AdminHelper::getMemberInfo($employees->Id));
     }
 
     public function create() {
