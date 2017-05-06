@@ -11,17 +11,59 @@ namespace App\Http\Controllers\Admin;
 
 use App\Admin;
 use App\Company;
+use App\Employee;
+use App\Job;
+use App\Member;
+use App\User;
 use Illuminate\Support\Facades\Auth;
 
 class AdminHelper
 {
-    static function getAdmin(){
-        $query = [ 'UserId' => Auth::getUser()->id ];
+    static function getAdmin()
+    {
+        $query = ['UserId' => Auth::getUser()->id];
 
         return Admin::where($query)->first();
     }
 
-    static function myCompany(){
+    static function myCompany()
+    {
         return Company::find(self::getAdmin()->CompanyId);
+    }
+
+    static function allJobs()
+    {
+        $query = ['CompanyId' => self::getAdmin()->CompanyId];
+
+        return Job::where($query)->get();
+    }
+
+    static function allEmployees()
+    {
+        $toReturn = Employee::all();
+
+        $toReturn = collect($toReturn)->reject(function ($employee) {
+            return !(self::existInCompany($employee->Id));
+        });
+
+        return $toReturn;
+    }
+
+    static function existInCompany($employeeId) {
+        $job = Job::find(Employee::find($employeeId)->JobId);
+
+        return $job->CompanyId == self::getAdmin()->CompanyId;
+    }
+
+    static function getMemberInfo($memberId){
+        $member = Member::find($memberId);
+        $user = User::find($member->Id);
+
+        return [
+            'name' => $user->name,
+            'email' => $user->email,
+            'TotalReservations' => $member->TotalReservations,
+            'UnattendedReservations' => $member->UnattendedReservations,
+        ];
     }
 }
