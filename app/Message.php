@@ -6,22 +6,25 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * @property mixed Id
- * @property mixed Name
- * @property mixed Photo
- * @property mixed TypeOfCategory
+ * @property mixed ThreadId
+ * @property mixed Body
+ * @property mixed ReadStatus
+ * @property mixed From
  * @property mixed created_at
  * @property mixed updated_at
  */
-class Category extends Model
+
+class Message extends Model
 {
     protected $primaryKey = 'Id';
 
-    protected $table = 'categories';
+    protected $table = 'messages';
 
     protected $fillable = [
-        'Name',
-        'Photo',
-        'TypeOfCategory'
+        'ThreadId',
+        'Body',
+        'ReadStatus',
+        'From'
     ];
 
     protected $guarded = 'Id';

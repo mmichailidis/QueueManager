@@ -14,8 +14,9 @@ class CreateCompaniesTable extends Migration
     {
         Schema::create('companies', function (Blueprint $table) {
             $table->increments('Id');
-            $table->integer('CompanyId')->unsigned();
-            $table->foreign('CompanyId')->references('Id')->on('companies')->onDelete('cascade');
+            $table->string('Name');
+            $table->integer('CategoryId')->unsigned();
+            $table->foreign('CategoryId')->references('Id')->on('categories')->onDelete('cascade');
             $table->boolean('AutoProceedActivated')->default(true);
             $table->integer('AutoProceedTime');
             $table->boolean('VerificationRequired')->default(true);
