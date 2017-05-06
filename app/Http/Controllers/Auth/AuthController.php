@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Employee;
+use App\Member;
 use App\User;
+use Illuminate\Support\Facades\Auth;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
@@ -63,10 +66,74 @@ class AuthController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $user =  User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
+
+        Member::create([
+            'UserID' => $user->id,
+            'TotalReservations' => 0,
+            'UnattendedReservations' => 0,
+        ]);
+
+        return $user;
+    }
+
+    /**
+     * When an Employee logs out his status is set on offline so he wont be assigned jobs
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function logout()
+    {
+        if(!Auth::check()) {
+            return redirect()->route('categories.index');
+        }
+
+        $employee = Employee::where(['UserId' => Auth::guard($this->getGuard())->user()->id])->first();
+
+        if($employee != null ) {
+            $employee->update([
+                'IsOnline' => false,
+            ]);
+        }
+
+        return $this->logoutExit();
+    }
+
+    /**
+     * Same as logout
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function getLogout()
+    {
+        if(!Auth::check()) {
+            return redirect()->route('categories.index');
+        }
+
+        $employee = Employee::where(['UserId' => Auth::guard($this->getGuard())->user()->id])->first();
+
+        if($employee != null ) {
+            $employee->update([
+                'IsOnline' => false,
+            ]);
+        }
+
+        return $this->logoutExit();
+    }
+
+    /**
+     * Overriden logouts method code cped here
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    private function logoutExit()
+    {
+        Auth::guard($this->getGuard())->logout();
+
+        return redirect()->route('categories.index');
     }
 }

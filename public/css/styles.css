@@ -1,4 +1,7 @@
 /*nav css*/
+.navbar-default .navbar-nav > li > a {
+    color: white !important;
+}
 
 /*footer css*/
 
