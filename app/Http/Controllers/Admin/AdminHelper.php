@@ -55,9 +55,19 @@ class AdminHelper
         return $job->CompanyId == self::getAdmin()->CompanyId;
     }
 
+    static function getEmployeeInfo($employeeId){
+        $employee = Employee::find($employeeId);
+        $user = User::find($employee->UserId);
+
+        return [
+            'name' => $user->name,
+            'email' => $user->email,
+        ];
+    }
+
     static function getMemberInfo($memberId){
         $member = Member::find($memberId);
-        $user = User::find($member->Id);
+        $user = User::find($member->UserId);
 
         return [
             'name' => $user->name,

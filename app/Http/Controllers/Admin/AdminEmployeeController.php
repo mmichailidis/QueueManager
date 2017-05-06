@@ -11,13 +11,26 @@ use App\Http\Controllers\Controller;
 class AdminEmployeeController extends Controller
 {
     public function index() {
-        $employees = Employee::all();
-        dd($employees);
-        dd(AdminHelper::getMemberInfo($employees->Id));
-        return view('admin.employee.index')->with('employees', $employees)->with('data',AdminHelper::getMemberInfo($employees->Id));
+        $employees = AdminHelper::allEmployees();
+        $dataToReturn = [];
+
+        $dataMap = collect($employees)->map(function($employee) use ($dataToReturn) {
+            return AdminHelper::getEmployeeInfo($employee->Id);
+        });
+
+        for ($i = 0 ; $i < count($dataMap) ; $i++) {
+            $dataToReturn[$i] = [
+                'Employee' => $employees[$i],
+                'Data' => $dataMap[$i],
+            ];
+        }
+
+        return view('admin.employee.index')->with('data',$dataToReturn);
     }
 
     public function create() {
+        $employees = AdminHelper::allEmployees();
+        return view('admin.employee.index')->with('employees', $employees));
 
     }
 
