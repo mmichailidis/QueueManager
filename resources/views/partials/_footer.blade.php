@@ -5,7 +5,7 @@
                 <div class="logofooter">Ctrl+C_Ctrl+V</div>
                 <p> Ομάδα φοιτητών από το Τεχνολογικό Εκπαιδευτικό Ίδρυμα Σερρών. <br> <br>
                     Front-End: Αυγέρη Κωνσταντίνα, Φωτιάδου Ιωάννα<br>
-                    Back-End: Ζαγκουμίδης Ορέστης, Μιχαιλίδης Μιχάλης</p>
+                    Back-End: Ζαγκουμίδης Ορέστης, Μιχαηλίδης Μιχάλης</p>
                 <p><i class="fa fa-map-pin"></i> Τέρμα Μαγνησίας Σέρρες T.K. 62124 </p>
                 <p><i class="fa fa-phone"></i> Τηλέφωνο : +30 23210 49341</p>
                 <p><i class="fa fa-envelope"></i> E-mail : queue@manager.com</p>
