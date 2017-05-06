@@ -57,34 +57,33 @@ class AdminEmployeeController extends Controller
         return view('admin.employee.show')
             ->with('employee', AdminHelper::getEmployeeInfo($employee));
     }
-
-    public function edit($id) {
-        $employee = Employee::find($id);
-
-        if (!AdminHelper::existInCompany($employee->Id)) {
-            return redirect()->route('admin.employee.index');
-        }
-
-        return route('admin.employee.edit')
-            ->with('employee', $employee)
-            ->with('jobs',AdminHelper::allJobs());
-    }
-
-    public function update(Request $request, $id) {
-        $employee = Employee::find($id);
-
-        if (!AdminHelper::existInCompany($employee->Id)) {
-            return redirect()->route('admin.employee.index');
-        }
-
-        $employee->update([
-            'IsOnline' => $request->input('IsOnline'),
-            'JobId' => $request->input('JobId'),
-            'UserId' => $request->input('UserId')
-        ]);
-
-        return view('admin.employee.index')->with('employee', AdminHelper::getEmployeeInfo($employee));
-    }
+//
+//    public function edit($id) {
+//        $employee = Employee::find($id);
+//
+//        if (!AdminHelper::existInCompany($employee->Id)) {
+//            return redirect()->route('admin.employee.index');
+//        }
+//
+//        return route('admin.employee.edit')
+//            ->with('employee', $employee)
+//            ->with('jobs',AdminHelper::allJobs());
+//    }
+//
+//    public function update(Request $request, $id) {
+//        $employee = Employee::find($id);
+//
+//        if (!AdminHelper::existInCompany($employee->Id)) {
+//            return redirect()->route('admin.employee.index');
+//        }
+//
+//        $employee->update([
+//            'IsOnline' => $request->input('IsOnline'),
+//            'JobId' => $request->input('JobId'),
+//        ]);
+//
+//        return view('admin.employee.index')->with('employee', AdminHelper::getEmployeeInfo($employee));
+//    }
 
     public function destroy($id) {
         $employee = Employee::find($id);
