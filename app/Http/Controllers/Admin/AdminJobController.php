@@ -10,7 +10,7 @@ use App\Http\Controllers\Controller;
 class AdminJobController extends Controller
 {
     public function index() {
-
+        return view('admin.job.index')->with('jobs',AdminHelper::allJobs());
     }
 
     public function create() {
