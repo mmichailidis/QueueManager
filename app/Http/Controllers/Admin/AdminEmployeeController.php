@@ -30,27 +30,60 @@ class AdminEmployeeController extends Controller
 
     public function create() {
         $employees = AdminHelper::allEmployees();
-        return view('admin.employee.index')->with('employees', $employees));
+        return view('admin.employee.index')->with('employees', $employees)->with('jobs', AdminHelper::allJobs());
 
     }
 
-    public function store() {
+    public function store(Request $request) {
+        $employee = Employee::create([
+            'IsOnline' => $request->input('IsOnline'),
+            'JobId' => $request->input('JobId'),
+            'UserId' => $request->input('UserId')
+        ]);
 
+        return redirect()->route('admin.employee.show', $employee->Id);
     }
 
     public function show($id) {
+        $employee = Employee::find($id);
+        //TODO CompanyId
+        if ($employee->CompanyId != AdminHelper::getAdmin()->CompanyId) {
+            return redirect()->route('admin.employee.index');
+        }
 
+        return view('admin.employee.show')->with('employee', AdminHelper::getEmployeeInfo($employee));
     }
 
     public function edit($id) {
+        $employee = Employee::find($id);
+        //TODO CompanyId
+        if ($employee->Id != AdminHelper::getAdmin()->Id) {
+            return redirect()->route('admin.employee.index');
+        }
 
+        return route('admin.employee.edit')->with('employee', $employee);
     }
 
-    public function update(Request $request) {
+    public function update(Request $request, $id) {
+        $employee = Employee::find($id);
+        //TODO CompanyId
+        if ($employee->Id != AdminHelper::getAdmin()->Id) {
+            return redirect()->route('admin.employee.index');
+        }
 
+        $employee->update([
+            'IsOnline' => $request->input('IsOnline'),
+            'JobId' => $request->input('JobId'),
+            'UserId' => $request->input('UserId')
+        ]);
+
+        return view('admin.employee.index')->with('employee', AdminHelper::getEmployeeInfo($employee));
     }
 
     public function destroy($id) {
+        $employee = Employee::find($id);
+        $employee->delete();
 
+        return redirect()->route('admin.employee.index');
     }
 }

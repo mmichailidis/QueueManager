@@ -51,7 +51,7 @@ class AdminJobController extends Controller
             return redirect()->route('admin.job.index');
         }
 
-        return view('admin.job.show')->with('job', $job);
+        return view('admin.job.edit')->with('job', $job);
 
     }
 
