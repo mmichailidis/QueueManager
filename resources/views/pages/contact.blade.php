@@ -5,7 +5,7 @@
         h1,h2,h3 {
             margin:0 0 25px 0;
             font-family: 'Patua One', cursive;
-            fonr-size : 15px
+            fonr-size : 15px;
             text-transform: uppercase;
             letter-spacing:1px;
         }
@@ -46,7 +46,7 @@
                                 <form class="form-horizontal">
                                     <div class="form-group">
                                         <label for="exampleInputName2">Name</label>
-                                        <input type="text" class="form-control" id="exampleInputName2" placeholder="Jane Doe">
+                                        <input type="text" class="form-control" id="exampleInputName2" placeholder="Το όναμα σας">
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputEmail2">Email</label>
