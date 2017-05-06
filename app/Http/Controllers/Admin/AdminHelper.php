@@ -10,15 +10,18 @@ namespace App\Http\Controllers\Admin;
 
 
 use App\Admin;
+use App\Company;
 use Illuminate\Support\Facades\Auth;
 
 class AdminHelper
 {
     static function getAdmin(){
-        $user = Auth::getUser();
-
-        $query = [ 'UserId' => $user->id ];
+        $query = [ 'UserId' => Auth::getUser()->id ];
 
         return Admin::where($query)->first();
+    }
+
+    static function myCompany(){
+        return Company::find(self::getAdmin()->CompanyId);
     }
 }
