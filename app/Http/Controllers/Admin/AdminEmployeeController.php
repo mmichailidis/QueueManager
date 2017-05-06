@@ -29,7 +29,7 @@ class AdminEmployeeController extends Controller
 
     }
 
-    public function update() {
+    public function update(Request $request) {
 
     }
 
