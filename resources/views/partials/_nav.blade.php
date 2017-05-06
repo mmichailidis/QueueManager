@@ -25,28 +25,27 @@
             <!-- Right Side Of Navbar -->
             <ul class="nav navbar-nav navbar-right">
                 <!-- Authentication Links -->
-                    <li><a href="{{ url('/home') }}">Αρχική</a></li>
-                    <li><a href="{{ url('/about') }}">Σχετικά</a></li>
-                    <li><a href="{{ url('/contact') }}">Επικοινωνία</a></li>
+                    <li><a href="{{route('categories.index')}}">Αρχική</a></li>
+                    <li><a href="{{route('contact.about')}}">Σχετικά</a></li>
+                    <li><a href="{{route('contact.index')}}">Επικοινωνία</a></li>
                 @if (Auth::guest())
-                    <li><a href="{{ url('/login') }}">Login</a></li>
-                    <li><a href="{{ url('/register') }}"><p class="navbar-btn"><button type="button" class="btn btn-success">Εγγραφή <span class="glyphicon glyphicon-log-in"></span></button> &nbsp;</p></a></li>
+                    <li><a href="{{route('auth.login')}}">Login</a></li>
+                    <li><a href="{{route('auth.register')}}"><p class="navbar-btn"><button type="button" class="btn btn-success">Εγγραφή <span class="glyphicon glyphicon-log-in"></span></button> &nbsp;</p></a></li>
                 @else
 
                     @if(\App\Http\Controllers\Helpers::isAdmin())
-                        <li><a href="{{ url('/home') }}">Εργαζόμενοι</a></li>
+                        <li><a href="{{route('admin.employee.index')}}">Εργαζόμενοι</a></li>
                         @if(\App\Http\Controllers\Helpers::isVerificationRequired())
-                            <li><a href="{{ url('/about') }}">Πελάτες</a></li>
+                            <li><a href="{{route('admin.member.index')}}">Πελάτες</a></li>
                         @endif
-                            <li><a href="{{ url('/contact') }}">Εργασίες</a></li>
-                            <li><a href="{{ url('/contact') }}">Η εταιρεία μου</a></li>
+                            <li><a href="{{route('admin.job.index')}}">Εργασίες</a></li>
+                            <li><a href="{{route('admin.show')}}">Η εταιρεία μου</a></li>
                         @elseif(\App\Http\Controllers\Helpers::isMember())
-                            <li><a href="{{ url('/contact') }}">Το προφίλ μου</a></li>
-                            <li><a href="{{ url('/contact') }}">Οι καταχωρίσεις μου</a></li>
+                            <li><a href="{{route('member.profile')}}">Το προφίλ μου</a></li>
                         @elseif(\App\Http\Controllers\Helpers::isEmployee())
-                            <li><a href="{{ url('/contact') }}">Το προφίλ μου</a></li>
-                            <li><a href="{{ url('/contact') }}">Η δουλειά μου</a></li>
-                            <li><a href="{{ url('/contact') }}">Εργασία</a></li>
+                            <li><a href="{{route('employee.profile')}}">Το προφίλ μου</a></li>
+                            <li><a href="{{route('employee.overview')}}">Η δουλειά μου</a></li>
+                            <li><a href="{{route('employee.work')}}">Εργασία</a></li>
                         @endif
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
