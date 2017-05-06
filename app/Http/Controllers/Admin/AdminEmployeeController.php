@@ -27,7 +27,7 @@ class AdminEmployeeController extends Controller
 
         return view('admin.employee.index')
             ->with('data',$dataToReturn)
-            ->with('jobs',AdminHelper::allJobs());
+            ->with('jobs',AdminHelper::allJobsAsArray());
     }
 
     public function create() {
