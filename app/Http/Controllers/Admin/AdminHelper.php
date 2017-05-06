@@ -9,7 +9,16 @@
 namespace App\Http\Controllers\Admin;
 
 
+use App\Admin;
+use Illuminate\Support\Facades\Auth;
+
 class AdminHelper
 {
+    static function getAdmin(){
+        $user = Auth::getUser();
 
+        $query = [ 'UserId' => $user->id ];
+
+        return Admin::where($query)->first();
+    }
 }
