@@ -21,10 +21,14 @@ class GeneralController extends Controller
         return view('categories.show')->with('companies',Company::where(['CategoryId' => $categoryId])->get());
     }
 
+    /**
+     * Company Landing Page
+     */
     public function companyIndex($categoryName, $companyName) {
-        $company = Company::find($companyName);
+        $query = ['Name' => $companyName];
+        $company = Company::where($query)->first();
 
-        if($company->CategoryId != $categoryName) {
+        if($company->CategoryId != Category::where(['Name' => $categoryName])->first()->Id) {
             redirect()->route('categories.index');
         }
 
