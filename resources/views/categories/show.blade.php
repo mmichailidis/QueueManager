@@ -1,11 +1,11 @@
 @extends('layouts.app')
-@section('title' , '| Eργαζόμενοι')
+@section('title' , '| Εταιρίες')
 @section('content')
 
     {{--{{ dd($data, $jobs) }}--}}
     {{--IsOnline, Se poio job einai (apo JobId), CurrentNumber, NumberStatus--}}
     <br><br>
-    <h2 style="margin-left:70px;">Εργαζόμενοι</h2>
+    <h2 style="margin-left:70px;">{{$categoryName}}</h2>
     <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
     <div class="container">
         <div class="row clearfix">
@@ -25,6 +25,9 @@
                         <th class="text-center">
                             Απαιτείται επαλήθευση
                         </th>
+                        <th class="text-center">
+                            Πάρε το εισητήριο σου τώρα!
+                        </th>
                     </tr>
                     </thead>
                     <tbody>
@@ -41,6 +44,9 @@
                             </td>
                             <td data-name="sel">
                                 {{\App\Service\Translator::forAll($company->VerificationRequired)}}
+                            </td>
+                            <td data-name="sel">
+                                <a href="{{route('company.index' ,[$categoryName , $company->Name] )}}">Πάρε εισητήριο</a>
                             </td>
                         </tr>
                     @endforeach

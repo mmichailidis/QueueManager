@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title' , '| Eπικοινωνία')
+@section('title' , '| Κατηγορίες')
 @section('content')
     <div class="image">
         <img src="{{URL::asset('/images/serres.jpg')}}" alt="profile Pic" style=width:100%;height:450px;">

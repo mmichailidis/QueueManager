@@ -5,7 +5,7 @@
     {{--{{ dd($data, $jobs) }}--}}
     {{--IsOnline, Se poio job einai (apo JobId), CurrentNumber, NumberStatus--}}
     <br><br>
-    <h2 style="margin-left:70px;">Εργαζόμενοι</h2>
+    <h2 style="margin-left:70px;">Το προφίλ μου</h2>
     <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
     <div class="container">
         <div class="row clearfix">
@@ -14,10 +14,16 @@
                     <thead>
                     <tr>
                         <th class="text-center">
-                            TotalReservations
+                            Συνολικές κρατήσεις
                         </th>
                         <th class="text-center">
-                            UnattendedReservations
+                            Απουσίες από τις κρατησεις
+                        </th>
+                        <th class="text-center">
+                            Όνομα
+                        </th>
+                        <th class="text-center">
+                            Email
                         </th>
                     </tr>
                     </thead>
@@ -43,6 +49,9 @@
                     </tr>
                     </tbody>
                 </table>
+                <a href="{{route('member.edit')}}" class="btn btn-success btn-md" style="margin-left: 1026px;">
+                    <span class="glyphicon glyphicon-wrench"></span> Επεξεργασία
+                </a>
             </div>
         </div>
     </div>
