@@ -64,11 +64,12 @@ class AdminJobController extends Controller
         }
 
         $avgTime = $job->AverageWaitingTime;
+        $lastNum = $job->LastNumber;
 
         $job->update([
             'Name' => $request->input('Name'),
             'IsByName' => $request->input('IsByName'),
-            'LastNumber' => 0,
+            'LastNumber' => $lastNum,
             'TypeOfJob' => $request->input('TypeOfJob'),
             'AverageWaitingTime' => $avgTime,
         ]);
@@ -85,5 +86,7 @@ class AdminJobController extends Controller
         }
 
         $job->delete();
+
+        return redirect()->route('admin.job.index');
     }
 }
