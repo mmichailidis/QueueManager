@@ -2,23 +2,41 @@
 @section('title' , '| Eπικοινωνία')
 @section('content')
 
-    <br>
-    <br>
-    <br>
-    <br>
-    <input type="text" id="currentNumber"/>
-    <input type="text" id="timer"/>
-    <input type="text" id="name"/>
-    <input type="button" id="arrived" value="arrived"/>
-    <input type="button" id="neverArrived" value="Never Arrived"/>
-    <input type="button" id="done" value="done" disabled/>
+    <br><br>
+    <h2 style="margin-left:70px;">'Ωρα για δουλειά!</h2>
+    <div class="container text-center">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 center">
+                <div class="jumbotron">
+                    <div class="col-md-6 col-xs-push-3 center" id="formTemplJump">
+
+                        <br><br>
+                        <input type="text" id="currentNumber" class="form-control input-lg"/>
+
+                        <br>
+                        <input type="text" id="timer" class="form-control input-lg"/>
+                        <br>
+                        <input type="text" id="name" class="form-control input-lg"/>
+                        <br><br>
+                        <div>
+                            <input type=button class="btn btn-primary" id="arrived" value="arrived"/>
+                            <input type="button" class="btn btn-primary" id="neverArrived" value="Never Arrived"/>
+                            <input type="button" class="btn btn-primary" id="done" value="done" disabled/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
 
 
 @endsection
 
 @section('extraScript')
     <script>
-        function refreshData(){
+        function refreshData() {
             $.ajax({
                 '_token': '{{Session::token()}}',
                 type: "POST",
