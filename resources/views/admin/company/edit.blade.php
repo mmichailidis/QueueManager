@@ -2,7 +2,7 @@
 @section('title' , '| Επεξεργασία στοιχείων')
 @section('content')
 
-</br></br>
+<br><br>
 <h2 style="margin-left:70px;">Επεξεργασία στοιχείων</h2>
 <div class="container text-center">
     <div class="row">
