@@ -66,7 +66,7 @@
                             Δες
                         </th>
                         <th class="text-center">
-                            Διαγραφή
+                           Διαγραφή
                         </th>
                     </tr>
                     </thead>
@@ -80,10 +80,14 @@
                                 {{$ticket->Time}}
                             </td>
                             <td data-name="Go">
-                                route('member.ticket.show' , $ticket->Id)
+                                <a href="{{route('member.ticket.show' , $ticket->Id)}}" class="btn btn-info btn-md">
+                                    <span class="glyphicon glyphicon-new-window"></span> Προβολή
+                                </a>
                             </td>
                             <td data-name="Del">
-                                route('member.ticket.destroy' , $ticket->Id)
+                                <a href="{{route('member.ticket.destroy' , $ticket->Id)}}" class="btn btn-info btn-md">
+                                    <span class="glyphicon glyphicon-trash"></span> Διαγραφή
+                                </a>
                             </td>
                         </tr>
                     @endforeach
