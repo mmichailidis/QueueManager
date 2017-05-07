@@ -16,7 +16,9 @@ $this->group(['middleware' => 'auth'], function () {
             $this->get('overview', ['as' => 'employee.overview', 'uses' => 'EmployeeController@myJob']);
             $this->get('work', ['as' => 'employee.work', 'uses' => 'EmployeeController@work']);
 
+            $this->post('inner/workDone',['as' => 'employee.workDone' , 'uses' => 'EmployeeController@workDone']);
             $this->post('inner/number', ['as' => 'employee.getNumber', 'uses' => 'EmployeeController@getNumber']);
+            $this->post('inner/arrived', ['as' => 'employee.memberArrived', 'uses' => 'EmployeeController@memberArrived']);
             $this->get('inner/chat', ['as' => 'employee.getChat', 'uses' => 'EmployeeController@getChatHistory']);
             $this->post('inner/chat', ['as' => 'employee.post', 'uses' => 'EmployeeController@postMessage']);
             $this->post('/done', ['as' => 'employee.done','uses' => 'EmployeeController@workDone']);

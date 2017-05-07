@@ -8,12 +8,13 @@ use App\EmployeeTimer;
 use App\Job;
 use App\Member;
 use App\NumberAssign;
-use App\Services\ClientTimers;
-use App\Services\Domain\Status;
-use App\Services\Domain\TicketHolder;
-use App\Services\ToS;
+use App\Service\ClientTimers;
+use App\Service\Domain\Status;
+use App\Service\Domain\TicketHolder;
+use App\Service\ToS;
 use App\Verification;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Log;
 
 class Client
 {
@@ -80,6 +81,8 @@ class Client
             $newAssign = $this->getTicket($newAssign->Id);
         }
 
+        Log::info('newAssign : ' . $newAssign);
+        Log::info('$flag : ' . $flag);
         return $newAssign;
     }
 
@@ -145,19 +148,25 @@ class Client
     {
         $employee = Employee::find($employeeId);
 
-        if(!$employee->IsOnline) {
+        if (!$employee->IsOnline) {
             $this->reCheckLazyEmployees($employee->JobId);
         }
 
         $query = ['JobId' => $employee->JobId, 'IsUsed' => false];
         $lines = NumberAssign::where($query)->get();
 
+        Log::info('lines' . $lines);
+
         $ticket = $this->getLowestNotUsedNumberColumn($lines);
 
+        Log::info('ticket ' . $ticket);
         if ($ticket == null) {
-//            return [ 'status' => 'error' , 'containsThread' => false , 'thead' => null];
             return;
         }
+
+        $ticket = NumberAssign::where(['Number' => $ticket])->first();
+
+        Log::info('ticket ' . $ticket);
 
         $employee->update([
             'CurrentNumber' => $ticket->Number,
@@ -172,7 +181,7 @@ class Client
 
         $thread = null;
 
-        if (ToS ::translate($ToS) == ToS::$LIVE_CHAT) {
+        if (ToS::translate($ToS) == ToS::$LIVE_CHAT) {
             ChatClient::make($ticket->MemberId, $employeeId);
         }
 
@@ -201,8 +210,9 @@ class Client
      */
     public function discardTicket($ticketId, $byUser = false)
     {
+        Log::info('reachedDiscard');
         $ticket = $this->getTicket($ticketId);
-
+        Log::info($ticket);
         $ticket->update([
             "Time" => Carbon::now()->timestamp - $ticket->Time,
             'IsUsed' => true,
@@ -256,7 +266,12 @@ class Client
      */
     public function reCheckLazyEmployees($jobId = '*')
     {
-        $query = ['NumberStatus' => Status::$DONE, 'IsOnline' => true, 'JobId' => $jobId ];
+        if ($jobId == '*') {
+            $query = ['NumberStatus' => Status::$DONE, 'IsOnline' => true];
+        } else {
+            $query = ['NumberStatus' => Status::$DONE, 'IsOnline' => true, 'JobId' => $jobId];
+        }
+
         $lazyEmployees = Employee::where($query)->get();
 
         foreach ($lazyEmployees as $lazy) {
@@ -294,10 +309,7 @@ class Client
      */
     private function getLowestNotUsedNumberColumn($data)
     {
-        if(is_array($data)) {
-            return collect($data)->min('Number');
-        }
-        return $data;
+        return collect($data)->min('Number');
     }
 
     /**

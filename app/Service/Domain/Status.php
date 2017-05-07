@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\Domain;
+namespace App\Service\Domain;
 
 
 class Status

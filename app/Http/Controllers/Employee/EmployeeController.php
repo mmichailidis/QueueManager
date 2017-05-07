@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Employee;
 
 use App\Service\ChatClient;
 use App\Service\Client;
-use App\Services\ToS;
+use App\Service\ToS;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -62,7 +62,7 @@ class EmployeeController extends Controller
             $request->has('status') ? $request->input('status') : null
         );
 
-        return redirect()->route('employee.profile');
+//        return redirect()->route('employee.work');
     }
 
     /**
@@ -75,21 +75,25 @@ class EmployeeController extends Controller
 
         if ($currentJob['status']) {
             $status = [
-                $status = $me->NumberStatus,
-                $number = $me->CurrentNumber,
-                $name = EmployeeHelper::getMemberName($currentJob['result']->MemberId),
-                $timer = $currentJob['result']->Timer,
+                'status' => $me->NumberStatus,
+                'number' => $me->CurrentNumber,
+                'name' => EmployeeHelper::getMemberName($currentJob['result']->MemberId),
+                'timer' => $currentJob['result']->Timer,
             ];
         } else {
             $status = [
-                $status = $me->NumberStatus,
-                $number = $me->CurrentNumber,
-                $name = '',
-                $timer = '',
+                'status' => $me->NumberStatus,
+                'number' => $me->CurrentNumber,
+                'name' => '',
+                'timer' => '',
             ];
         }
 
         return $status;
+    }
+
+    public function memberArrived(){
+        $this->client->memberArrived(EmployeeHelper::getEmployee()->Id);
     }
 
     /**
