@@ -2,6 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-4 col-sm-6 footerleft ">
+
                 <div class="logofooter">Ctrl+C_Ctrl+V</div>
                 <p> Ομάδα φοιτητών από το Τεχνολογικό Εκπαιδευτικό Ίδρυμα Σερρών. <br> <br>
                     Front-End: Αυγέρη Κωνσταντίνα, Φωτιάδου Ιωάννα<br>
@@ -18,9 +19,6 @@
                     <li><a href="#"> Privacy Policy</a></li>
                     <li><a href="#"> Terms & Conditions</a></li>
                     <li><a href="#"> Client Gateway</a></li>
-                    <li><a href="#"> Ranking</a></li>
-                    <li><a href="#"> Case Studies</a></li>
-                    <li><a href="#"> Frequently Ask Questions</a></li>
                 </ul>
             </div>
             <div class="col-md-3 col-sm-6 paddingtop-bottom">
@@ -32,6 +30,7 @@
                 </div>
             </div>
             <div class="col-md-3 col-sm-6 paddingtop-bottom">
+                <br>
                 <div class="social-page" data-href="https://www.facebook.com/facebook" data-tabs="timeline" data-height="300" data-small-header="false" style="margin-bottom:15px;" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
                     <div class="fb-xfbml-parse-ignore">
                         <blockquote cite="https://www.facebook.com/facebook"><a href="https://www.facebook.com/">Facebook</a></blockquote>
@@ -46,9 +45,7 @@
 <!--footer start from here-->
 
 <div class="copyright">
-    <div class="container">
         <div class="col-md-6">
             <p>© 2017 - All rights reserved</p>
         </div>
-    </div>
 </div>

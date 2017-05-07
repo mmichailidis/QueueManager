@@ -15,6 +15,7 @@
     </div>
     <div class="row">
         <h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Το νούμερο που ζητάτε δεν υπάρχει ή δεν έχετε άδεια να βγάλετε νούμερο!</h2>
+        <br><br>
     </div>
 
 @endsection
