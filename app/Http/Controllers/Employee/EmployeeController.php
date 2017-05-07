@@ -100,7 +100,7 @@ class EmployeeController extends Controller
      * API
      * Ignore read status. Not working as intended
      */
-    public function getChatHistory()
+    public function getChatHistory(Request $request)
     {
         $myJob = EmployeeHelper::getJob();
 
@@ -118,8 +118,10 @@ class EmployeeController extends Controller
 
         if (ChatClient::isRequestedToEnd($threadId)) {
             $toReturn = [
-                'data' => ChatClient::pull($threadId, ChatClient::$EMPLOYEE),
+                'data' => ChatClient::pull($threadId, ChatClient::$EMPLOYEE,$request->input('clean')),
                 'status' => 'final',
+                'memberName' => EmployeeHelper::getMemberNameWithThread($threadId),
+                'employeeName' => EmployeeHelper::getEmployeeInfo()['name'],
                 'goodbye' => ChatClient::defaultGoodbye($threadId)
             ];
 
@@ -130,7 +132,9 @@ class EmployeeController extends Controller
 
         return [
             'data' => ChatClient::pull($threadId, ChatClient::$EMPLOYEE),
-            'status' => 'ok'
+            'status' => 'ok',
+            'memberName' => EmployeeHelper::getMemberNameWithThread($threadId),
+            'employeeName' => EmployeeHelper::getEmployeeInfo()['name'],
         ];
     }
 

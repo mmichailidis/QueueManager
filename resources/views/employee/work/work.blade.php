@@ -23,11 +23,13 @@
                         <input type="button" class="btn btn-primary" id="neverArrived" value="Δεν παραδόθηκε ποτέ"/>
                         <br><br>
                         <input type="button" class="btn btn-primary btn-block" id="done" value="Ολοκληρώθηκε" disabled/>
+
                     </div>
                 </div>
             </div>
         </div>
    </div>
+
 
 
 

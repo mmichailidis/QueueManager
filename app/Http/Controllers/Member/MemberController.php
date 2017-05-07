@@ -69,7 +69,7 @@ class MemberController extends Controller
             return redirect()->route('categories.index');
         }
 
-        $this->clientService->discardTicket($ticketId,true);
+        $this->clientService->discardTicket($ticketId, true);
 
         return redirect()->route('member.profile');
     }
@@ -100,20 +100,37 @@ class MemberController extends Controller
     }
 
 
-    /**
-     * A button with "check chat request" can solve this problem.
-     * It support ONLY 1 member
-     */
-    public function login()
-    {
-        return view('member.chat')
-            ->with('data', $this->getChatHistory());
-    }
+//    /**
+//     * A button with "check chat request" can solve this problem.
+//     * It support ONLY 1 member
+//     */
+//    public function login(Request $request)
+//    {
+//        $me = MemberHelper::getMember();
+//
+//        $threadId = ChatClient::getThreadId(['MemberId' => $me->Id]);
+//
+//        if ($threadId == ChatClient::$ERROR) {
+//            return ['status' => ChatClient::$ERROR];
+//        } else {
+//            return view('member.chat')
+//                ->with('data',
+//                    [
+//                        'status' => 'ok',
+//                        'data' => ChatClient::pull($threadId, ChatClient::$MEMBER, true),
+//                        'memberName' => MemberHelper::myName(),
+//                        'employeeName' => MemberHelper::getEmployeeNameWithThread($threadId),
+//                    ]);
+//        }
+//    }
 
+    public function login(){
+        return view('member.chat');
+    }
     /*
      * API
      */
-    public function getChatHistory()
+    public function getChatHistory(Request $request)
     {
         $me = MemberHelper::getMember();
 
@@ -124,7 +141,9 @@ class MemberController extends Controller
         } else {
             return [
                 'status' => 'ok',
-                'data' => ChatClient::pull($threadId, ChatClient::$MEMBER)
+                'data' => ChatClient::pull($threadId, ChatClient::$MEMBER),
+                'memberName' => MemberHelper::myName(),
+                'employeeName' => MemberHelper::getEmployeeNameWithThread($threadId),
             ];
         }
     }

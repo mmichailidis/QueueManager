@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Member;
 
 
+use App\Employee;
 use App\Member;
 use App\NumberAssign;
+use App\Thread;
 use App\User;
 use Illuminate\Support\Facades\Auth;
 
@@ -44,5 +46,9 @@ class MemberHelper
 
     static function isMember(){
         return self::getMember() != null;
+    }
+
+    static function getEmployeeNameWithThread($threadId){
+        return User::find(Employee::find(Thread::find($threadId)->EmployeeId)->UserId)->name;
     }
 }

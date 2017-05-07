@@ -6,6 +6,7 @@ use App\Employee;
 use App\EmployeeTimer;
 use App\Job;
 use App\Member;
+use App\Thread;
 use App\User;
 use Illuminate\Support\Facades\Auth;
 
@@ -52,7 +53,7 @@ class EmployeeHelper
         return User::find(Member::find($memberId)->UserId)->name;
     }
 
-    static function requestNext(){
-
+    static function getMemberNameWithThread($threadId){
+        return self::getMemberName(Thread::find($threadId)->MemberId);
     }
 }
