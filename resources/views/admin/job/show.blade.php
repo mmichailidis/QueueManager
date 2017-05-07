@@ -2,5 +2,5 @@
 
 {{$job->Name}}
 {{$job->IsByName}}
-{{$job->LastNumber}}
-{{$job->VarificationRequired}}
+{{$job->TypeOfJob}}
+{{ $job->LastNumber }}
