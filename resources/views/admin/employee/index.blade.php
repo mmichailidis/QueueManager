@@ -8,6 +8,12 @@
 <h2 style="margin-left:70px;">Εργαζόμενοι</h2>
 <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
 <div class="container">
+    <div class="row">
+        <div class="col-md-3 col-md-offset-9" style="margin-bottom: 10px">
+            <a href="{{ route('admin.employee.create') }}" class="btn btn-block btn-success">
+                <span style="font-family: 'Open Sans', sans-serif;">Δημιουργία Νέου Εργαζομένου</span></a>
+        </div>
+    </div>
     <div class="row clearfix">
         <div class="col-md-12 table-responsive">
             <table class="table table-bordered table-hover table-sortable" id="tab_logic">
@@ -20,11 +26,12 @@
                         Θέση εργασίας
                     </th>
                     <th class="text-center">
-                        Τρεχούμενος αριθμός εξυπηρέτησης
+                        Τρέχων αριθμός εξυπηρέτησης
                     </th>
                     <th class="text-center">
                         Κατάσταση αριθμού
                     </th>
+                    <th></th>
                 </tr>
                 </thead>
                 <tbody>
@@ -34,7 +41,7 @@
                             @if(($single['Employee']->IsOnline) == 1)
                                 <div class="led-green"></div>
                             @else
-                            <div class="led-red"></div>
+                                <div class="led-red"></div>
                             @endif
                         </td>
                         <td data-name="mail">
@@ -45,6 +52,9 @@
                         </td>
                         <td data-name="sel">
                             {{$single['Employee']->NumberStatus}}
+                        </td>
+                        <td>
+                            <a href="{{ route('admin.employee.show', $single['Employee']->Id) }}"><span class="glyphicon glyphicon-user"></span></a>
                         </td>
                     </tr>
                 @endforeach

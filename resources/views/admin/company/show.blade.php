@@ -1,11 +1,11 @@
 @extends('layouts.app')
-@section('title' , '| Eργαζόμενοι')
+@section('title' , '| Η εταιρεία μου')
 @section('content')
 
     {{--{{ dd($data, $jobs) }}--}}
     {{--IsOnline, Se poio job einai (apo JobId), CurrentNumber, NumberStatus--}}
     <br><br>
-    <h2 style="margin-left:70px;">Εργαζόμενοι</h2>
+    <h2 style="margin-left:70px;">Η εταιρεία μου</h2>
     <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
     <div class="container">
         <div class="row clearfix">
@@ -25,6 +25,7 @@
                         <th class="text-center">
                             Απαιτείται επαλήθευση
                         </th>
+                        <th></th>
                     </tr>
                     </thead>
                     <tbody>
@@ -33,13 +34,16 @@
                                 {{$company->Name}}
                             </td>
                             <td data-name="mail">
-                                {{$company->AutoProceedActivated}}
+                                {{\App\Service\Translator::forAll($company->AutoProceedActivated)}}
                             </td>
                             <td data-name="desc">
                                 {{$company->AutoProceedTime}}
                             </td>
                             <td data-name="sel">
-                                {{$company->VerificationRequired}}
+                                {{\App\Service\Translator::forAll($company->VerificationRequired)}}
+                            </td>
+                            <td>
+                                <a href="{{ route('admin.edit', $company->Id) }}" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-edit"></span></a>
                             </td>
                         </tr>
                     </tbody>
