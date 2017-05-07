@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services;
+namespace App\Service;
 
 use App\Employee;
 use App\EmployeeTimer;
@@ -73,6 +73,6 @@ class ClientTimers
             }
         }
 
-        return $totalCount / $count;
+        return $totalCount / ( $count == 0 ? 1 : $count ) ;
     }
 }
