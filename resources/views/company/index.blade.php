@@ -44,7 +44,7 @@
                                 {{$job->LastNumber}}
                             </td>
                             <td data-name="sel">
-                                {{$job->TypeOfJob}}
+                                {{\App\Service\ToS::translateToGreek($job->TypeOfJob)}}
                             </td>
                             <td data-name="sel">
                                 {{$job->AverageWaitingTime}}
