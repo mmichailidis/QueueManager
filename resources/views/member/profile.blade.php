@@ -63,7 +63,7 @@
                             Ώρα
                         </th>
                         <th class="text-center">
-                            Δες
+                            Προβολή
                         </th>
                         <th class="text-center">
                            Διαγραφή
