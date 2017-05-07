@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Employee;
 use App\Member;
+use App\Service\Domain\Status;
 use App\User;
 use Illuminate\Support\Facades\Auth;
 use Validator;
@@ -97,6 +98,7 @@ class AuthController extends Controller
         if($employee != null ) {
             $employee->update([
                 'IsOnline' => false,
+                'NumberStatus' => Status::$DONE,
             ]);
         }
 
@@ -119,6 +121,7 @@ class AuthController extends Controller
         if($employee != null ) {
             $employee->update([
                 'IsOnline' => false,
+                'NumberStatus' => Status::$DONE,
             ]);
         }
 
