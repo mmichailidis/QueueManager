@@ -56,12 +56,3 @@
         </div>
     </div>
 @endsection
-
-@section('extraScript')
-    <script>
-        $(function() {
-            $(".locked").keydown(false);
-        })
-
-    </script>
-@endsection

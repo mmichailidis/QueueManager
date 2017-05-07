@@ -3,7 +3,6 @@
 @section('title', '| Δημιουργία Νέου Εργαζομένου')
 
 @section('content')
-    {{--{{ dd($employees, $jobs) }}--}}
     <br><br>
     <h2 style="margin-left:70px;">Δημιουργία νέου εργαζόμενου</h2>
     <div class="container text-center">
