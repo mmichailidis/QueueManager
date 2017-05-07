@@ -53,6 +53,7 @@
                     <span class="glyphicon glyphicon-wrench"></span> Επεξεργασία
                 </a>
 
+
                 <table class="table table-bordered table-hover table-sortable" id="tab_logic">
                     <thead>
                     <tr>
@@ -92,6 +93,7 @@
                                 {!! Form::open(['route' => ['member.ticket.destroy', $ticket->Id], 'method' => 'DELETE']) !!}
                                 {{ Form::submit('Διαγραφή', ['class' => 'btn btn-info btn-md']) }}
                                 {!! Form::close() !!}
+
                             </td>
                         </tr>
                     @endforeach
