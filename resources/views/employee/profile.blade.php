@@ -33,7 +33,7 @@
                             {{$data['email']}}
                         </td>
                         <td data-name="desc">
-                            {{$employee->CurentNumber}}
+                            {{$employee->CurrentNumber}}
                         </td>
                     </tr>
                     </tbody>
