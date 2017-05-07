@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services;
+namespace App\Service;
 
 class ToS
 {
@@ -24,5 +24,13 @@ class ToS
             self::$IN_PERSON,
             self::$LIVE_CHAT
         ];
+    }
+
+    public static function translateToGreek($tosId) {
+        if ($tosId == 1) {
+            return 'Προσωπική Διεπαφή';
+        } else {
+            return 'Ηλεκτρονική Βοήθεια';
+        }
     }
 }
