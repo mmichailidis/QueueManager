@@ -31,11 +31,16 @@
             </div>
             <div class="col-md-3 col-sm-6 paddingtop-bottom">
                 <br>
-                <div class="social-page" data-href="https://www.facebook.com/facebook" data-tabs="timeline" data-height="300" data-small-header="false" style="margin-bottom:15px;" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
+                <div class="social-page" data-href="https://www.facebook.com/facebook" data-tabs="timeline"
+                     data-height="300" data-small-header="false" style="margin-bottom:15px;"
+                     data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
                     <div class="fb-xfbml-parse-ignore">
-                        <blockquote cite="https://www.facebook.com/facebook"><a href="https://www.facebook.com/">Facebook</a></blockquote>
-                        <blockquote cite="https://www.twitter.com/facebook"><a href="https://www.twitter.com">Twitter</a></blockquote>
-                        <blockquote cite="https://plus.google.com/explore?hl=el"><a href="https://plus.google.com/explore?hl=el">Google+</a></blockquote>
+                        <blockquote cite="https://www.facebook.com/facebook"><a href="https://www.facebook.com/">Facebook</a>
+                        </blockquote>
+                        <blockquote cite="https://www.twitter.com/facebook"><a
+                                    href="https://www.twitter.com">Twitter</a></blockquote>
+                        <blockquote cite="https://plus.google.com/explore?hl=el"><a
+                                    href="https://plus.google.com/explore?hl=el">Google+</a></blockquote>
                     </div>
                 </div>
             </div>
@@ -45,7 +50,5 @@
 <!--footer start from here-->
 
 <div class="copyright">
-        <div class="col-md-6">
-            <p>© 2017 - All rights reserved</p>
-        </div>
+    <p style="margin-left: 45%">© 2017 - All rights reserved</p>
 </div>

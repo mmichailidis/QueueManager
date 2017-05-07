@@ -7,4 +7,4 @@
         <textarea class="form-control" rows="5" cols="10" id="comment"></textarea>
     </div>
 
-@endsection<?php
+@endsection
