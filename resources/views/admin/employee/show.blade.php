@@ -1,19 +1,4 @@
 @extends('layouts.app')
-
-@section('title', '| Εργαζόμενοι')
-
-{{--@section('content')--}}
-    {{--<div class="container">--}}
-        {{--<div class="row">--}}
-            {{--<div class="col-md-12">--}}
-                {{--<label>Name:</label> {{ $employee['name'] }}--}}
-                {{--<label>Email:</label> {{ $employee['email'] }}--}}
-            {{--</div>--}}
-        {{--</div>--}}
-    {{--</div>--}}
-{{--@endsection--}}
-
-@extends('layouts.app')
 @section('title' , '| Eργαζόμενοι')
 @section('content')
 
@@ -35,14 +20,14 @@
                             E-mail
                         </th>
                         <th class="text-center">
-                            NumberStatus
+                            Κατάσταση αριθμού
                         </th>
                         <th class="text-center">
-                            CurrentNumber
+                            Τρεχούμενος αριθμός εξυπηρέτησης
                         </th>
 
                         <th class="text-center">
-                            Job
+                            Εργασία
                         </th>
                     </tr>
                     </thead>
