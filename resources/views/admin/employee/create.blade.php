@@ -4,7 +4,7 @@
 
 @section('content')
     <br><br>
-    <h2 style="margin-left:70px;">Δημιουργία νέου εργαζόμενου</h2>
+    <h2 style="margin-left:70px;">Δημιουργία Νέου Εργαζομένου</h2>
     <div class="container text-center">
         <div class="row">
             <div class="col-md-8 col-md-offset-2 center">
@@ -30,6 +30,7 @@
                         <br> <br>
                         {{ Form::submit('Δημιουργία', ['class' => 'btn btn-block btn-success']) }}
                         {!! Form::close() !!}
+                        <a href="{{ route('admin.employee.index') }}" class="btn btn-block btn-danger" style="margin-top: 10px;"><span class="glyphicon glyphicon-arrow-left"> Πίσω</span></a>
                     </div>
                 </div>
             </div>
