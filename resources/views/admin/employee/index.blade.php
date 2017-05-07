@@ -54,7 +54,7 @@
                             {{$single['Employee']->NumberStatus}}
                         </td>
                         <td>
-                            <a href="{{ route('admin.employee.show', $single['Employee']->Id) }}"><span class="glyphicon glyphicon-user"></span></a>
+                            <a href="{{ route('admin.employee.show', $single['Employee']->Id) }}"><span class="glyphicon glyphicon-wrench"></span></a>
                         </td>
                     </tr>
                 @endforeach
