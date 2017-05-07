@@ -74,7 +74,7 @@ class AuthController extends Controller
         ]);
 
         Member::create([
-            'UserID' => $user->id,
+            'UserId' => $user->id,
             'TotalReservations' => 0,
             'UnattendedReservations' => 0,
         ]);

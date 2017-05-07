@@ -17,7 +17,7 @@ class CreateAdminsTable extends Migration
             $table->integer('CompanyId')->unsigned();
             $table->foreign('CompanyId')->references('Id')->on('companies')->onDelete('cascade');
             $table->integer('UserId')->unsigned();
-            $table->foreign('UserId')->references('id')->on("users")->onDelete('cascade');
+            $table->foreign('UserId')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }
