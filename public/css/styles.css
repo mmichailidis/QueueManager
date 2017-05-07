@@ -9,7 +9,21 @@
 }
 
 .navbar-default .navbar-nav > li > a:hover{
-    color: blue !important;
+    color: #e3fcff !important;
+}
+
+.dropdown-menu {
+    font-size: 14px;
+    text-align: left;
+    list-style: none;
+    background-color: #101010 !important;
+}
+
+.dropdown-menu > li > a:focus, .dropdown-menu > li > a:hover {
+    color: #262626;
+    text-decoration: none;
+    text-decoration-color: #e3fcff;
+    background-color:  #101010 !important;
 }
 
 /*welcome image*/
