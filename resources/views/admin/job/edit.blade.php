@@ -37,4 +37,11 @@
     </div>
 </div>
 
+<<<<<<< HEAD
 @endsection
+=======
+
+{{ Form::submit('Save Changes', ['class' => 'btn btn-success btn-block']) }}
+
+{!! Form::close() !!}
+>>>>>>> 068de03a21dd60c1c8f346188a480b9c6e389338
