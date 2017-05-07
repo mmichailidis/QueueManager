@@ -24,24 +24,30 @@
         </section>
     </div>
 
-    <section class="fourth-part">
-        @foreach($categories as $category)
-            @if($category->TypeOfCategory == 1)
-                <div class="item">
-                    <ul class="thumbnails">
-                        <li class="col-sm-3">
-                            <div class="fff">
-                                    <div class="thumbnail">
-                                        <a href="{{route('categories.show' , $category->Name)}}"><img src="{{URL::asset($category->Photo)}}"></a>
-                                    </div>
-                                    <div class="caption">
-                                        <h4>{{$category->Name}}</h4>
-                                    </div>
+    <section class="slide-wrapper">
+
+            <div id="myCarousel" class="carousel slide">
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner">
+                    <div class="item item1 active">
+                        <div class="fill" style=" background-color:#48c3af;">
+                            <div class="inner-content">
+                                <div class="carousel-img">
+                                    <img src="{{URL::asset('/images/chat.png')}}" class="img img-responsive" alt="chatPic" style=width:20%;height:20%;">
+                                </div>
+                                <div class="carousel-desc">
+
+                                    <h2>Live Chat</h2>
+                                    <p>Τώρα μπορείτε μέσα από την εφαρμογή Queue Manager να συνομιλήσετε με την υπηρεσία που θέλετε για όποια πληροφορία χρειάζεστε χωρίς κόπο και άσκοπες διαδρομές που κουράζουν!</p>
+                                    <br><br>
+                                </div>
                             </div>
-                        </li>
-                    </ul>
+                        </div>
                 </div>
-            @endif
-        @endforeach
+            </div>
+        </div>
+
     </section>
+
+
 @endsection

@@ -65,3 +65,7 @@
 
 <!-- Carousel -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightslider/1.1.6/css/lightslider.css">
+
+{{--chat part--}}
+<link href="https://fonts.googleapis.com/css?family=Sansita" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">

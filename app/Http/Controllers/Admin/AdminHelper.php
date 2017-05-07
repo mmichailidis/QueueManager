@@ -97,6 +97,7 @@ class AdminHelper
         $user = User::find($member->UserId);
 
         return [
+            'MemberId' => $memberId,
             'name' => $user->name,
             'email' => $user->email,
             'TotalReservations' => $member->TotalReservations,
