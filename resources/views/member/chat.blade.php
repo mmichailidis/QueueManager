@@ -1,17 +1,56 @@
 @extends('layouts.app')
 @section('title' , '| Chat')
 @section('content')
-    <br>
-    <br>
-    <br>
-    <div class="form-group">
-        <label for="comment">ChatRoom:</label>
-        <textarea class="form-control" rows="10" cols="1" id="chatRoom"></textarea>
-    </div>
+
+
 
     <input type="text" id="message">
     <input type="button" id="post" value="Send"/>
     <input type="button" id="getOut" value="Logout"/>
+
+
+    <br><br>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5">
+                <div class="panel panel-primary">
+                    <div class="panel-heading" id="accordion">
+                        <span class="glyphicon glyphicon-comment"></span> Chat
+                        <div class="btn-group pull-right">
+                            <a type="button" class="btn btn-default btn-xs" data-toggle="collapse"
+                               data-parent="#accordion" href="#collapseOne">
+                                <span class="glyphicon glyphicon-chevron-down"></span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="panel-collapse collapse" id="collapseOne">
+                        <div class="panel-body">
+
+                            {{--MIX--}}
+                            <div class="form-group">
+                                <label for="comment">ChatRoom:</label>
+                                <textarea class="form-control" rows="10" cols="1" id="chatRoom"></textarea>
+                            </div>
+
+                        </div>
+                        <div class="panel-footer">
+                            <div class="input-group">
+                                <!--MIX-->
+                                <input type="text" id="message">
+                                <input type="button" id="post" value="Send"/>
+                                <input type="button" id="getOut" value="Logout"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
 
 @endsection
 
