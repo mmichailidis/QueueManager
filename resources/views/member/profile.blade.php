@@ -78,7 +78,7 @@
                                 {{$ticket->Number}}
                             </td>
                             <td data-name="Time">
-                                {{\App\Service\TimeConverter::fromUnix($ticket->Time)}}
+                               {{$ticket->Time}}
                             </td>
                             <td data-name="Go">
                                 <a href="{{route('member.ticket.show' , $ticket->Id)}}" class="btn btn-info btn-md">
