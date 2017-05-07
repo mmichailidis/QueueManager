@@ -7,14 +7,14 @@ class Translator
     public static function forAll($in, $isBackwards = false)
     {
         if ($isBackwards) {
-            if ($in == 'Ναί') {
+            if ($in == 'Ναι') {
                 return true;
             } else {
                 return false;
             }
         } else {
             if ($in == 1) {
-                return "Ναί";
+                return "Ναι";
             } else {
                 return "Όχι";
             }
