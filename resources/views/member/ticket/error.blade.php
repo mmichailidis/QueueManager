@@ -1,3 +1,4 @@
+
 @extends('layouts.app')
 @section('title' , '| Eργαζόμενοι')
 @section('content')
@@ -5,3 +6,4 @@
 
 <p>Το νούμερο που ζητάτε δεν υπάρχει</p>
 @endsection
+

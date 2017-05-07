@@ -30,7 +30,7 @@ class MemberHelper
     }
 
     static function myTickets(){
-        $query = [ 'MemberId' => self::getMember()->Id];
+        $query = [ 'MemberId' => self::getMember()->Id , 'IsUsed' => false ];
         return NumberAssign::where($query)->get();
     }
 

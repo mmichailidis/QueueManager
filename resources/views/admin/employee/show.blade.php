@@ -1,13 +1,18 @@
 @extends('layouts.app')
-@section('title' , '| Eργαζόμενοι')
+@section('title' , '| Στοιχεία Eργαζομένου')
 @section('content')
 
     {{--{{ dd($data, $jobs) }}--}}
     {{--IsOnline, Se poio job einai (apo JobId), CurrentNumber, NumberStatus--}}
     <br><br>
-    <h2 style="margin-left:70px;">Εργαζόμενοι</h2>
+    <h2 style="margin-left:70px;">Στοιχεία Eργαζομένου</h2>
     {{--<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>--}}
     <div class="container">
+        <div class="row">
+            <div class="col-md-3 col-md-offset-9" style="margin-bottom: 10px">
+                <a href="{{ route('admin.employee.index') }}" class="btn btn-block btn-primary"><span class="glyphicon glyphicon-arrow-left"> Πίσω</span></a>
+            </div>
+        </div>
         <div class="row clearfix">
             <div class="col-md-12 table-responsive">
                 <table class="table table-bordered table-hover table-sortable" id="tab_logic">
@@ -23,12 +28,13 @@
                             Κατάσταση αριθμού
                         </th>
                         <th class="text-center">
-                            Τρεχούμενος αριθμός εξυπηρέτησης
+                            Τρέχων αριθμός εξυπηρέτησης
                         </th>
 
                         <th class="text-center">
-                            Εργασία
+                            Θέση Εργασίας
                         </th>
+                        <th></th>
                     </tr>
                     </thead>
                     <tbody>
@@ -47,6 +53,9 @@
                             </td>
                             <td data-name="sel">
                                 {{$jobs[$employee->JobId]->Name}}
+                            </td>
+                            <td>
+                                <a href="{{ route('admin.employee.destroy', $employee->Id) }}" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash"></span></a>
                             </td>
                         </tr>
                     </tbody>

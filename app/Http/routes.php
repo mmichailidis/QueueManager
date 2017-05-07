@@ -71,7 +71,6 @@ $this->group(['middleware' => 'auth'], function () {
         $this->get('ticket/{ticketId}', ['as' => 'member.ticket.show', 'uses' => 'MemberController@show']);
         $this->delete('ticket/{ticketId}', ['as' => 'member.ticket.destroy', 'uses' => 'MemberController@destroy']);
 
-
         $this->get('/', ['as' => 'member.profile', 'uses' => 'MemberController@myProfile']);
         $this->get('/edit', ['as' => 'member.edit', 'uses' => 'MemberController@edit']);
         $this->put('/', ['as' => 'member.update', 'uses' => 'MemberController@update']);
