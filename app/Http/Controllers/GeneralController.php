@@ -22,9 +22,10 @@ class GeneralController extends Controller
     }
 
     public function companyIndex($categoryName, $companyName) {
-        $company = Company::find($companyName);
+        $query = ['Name' => $companyName];
+        $company = Company::where($query)->first();
 
-        if($company->CategoryId != $categoryName) {
+        if($company->CategoryId != Category::where(['Name' => $categoryName])->first()->Id) {
             redirect()->route('categories.index');
         }
 
