@@ -19,6 +19,7 @@
                         <br> <br> <br> <br>
                         {{ Form::submit('Δημιουργία', ['class' => 'btn btn-block btn-success']) }}
                         {!! Form::close() !!}
+                        <a href="{{ route('admin.member.index') }}" class="btn btn-block btn-primary" style="margin-top: 50px;"><span class="glyphicon glyphicon-arrow-left"> Πίσω</span></a>
                     </div>
                 </div>
             </div>

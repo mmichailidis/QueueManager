@@ -1,6 +1,8 @@
 @extends('layouts.app')
 @section('title' , '| Eργαζόμενοι')
 @section('content')
+    <div><br><br></div>
+    <h2 style="margin-left:70px;">Αριθμός προτερεώτητας</h2>
     <div class="container">
         <div class="row clearfix">
             <div class="col-md-12 table-responsive">
