@@ -18,7 +18,7 @@ class CreateEmployeesTable extends Migration
             $table->integer('JobId')->unsigned();
             $table->foreign('JobId')->references('Id')->on('jobs')->onDelete('cascade');
             $table->integer('UserId')->unsigned();
-            $table->foreign('UserId')->references('Id')->on('users')->onDelete('cascade');
+            $table->foreign('UserId')->references('id')->on('users')->onDelete('cascade');
             $table->integer('CurrentNumber');
             $table->string('NumberStatus');
             $table->timestamps();
