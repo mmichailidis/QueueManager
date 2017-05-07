@@ -60,6 +60,5 @@
         $(function() {
             $(".locked").keydown(false);
         })
-
     </script>
 @endsection

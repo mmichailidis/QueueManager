@@ -15,6 +15,7 @@
 {{ Form::label('AverageWaitingTime', 'AverageWaitingTime:') }}
 {{ Form::text('AverageWaitingTime', null, ["class" => 'form-control input-lg']) }}
 
+
 {{ Form::submit('Save Changes', ['class' => 'btn btn-success btn-block']) }}
 
 {!! Form::close() !!}
