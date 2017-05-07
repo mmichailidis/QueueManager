@@ -59,7 +59,7 @@ class ChatClient
     {
         $thread = Thread::find($threadId);
 
-        if($thread->RequestForEnd) {
+        if ($thread->RequestForEnd) {
             self::destroy($threadId);
         } else {
             $thread->update([
@@ -84,7 +84,7 @@ class ChatClient
         ]);
     }
 
-    public static function pull($threadId, $reader)
+    public static function pull($threadId, $reader , $isClean = false)
     {
         $query = [
             'ThreadId' => $threadId,
@@ -92,7 +92,17 @@ class ChatClient
 
         $all = Message::where($query)->get();
 
+        $toReturn = [];
+
         foreach ($all as $one) {
+            if($isClean) {
+                if (($one->From != $reader) && (!$one->ReadStatus)) {
+                    array_push($toReturn, $one);
+                }
+            } else {
+                array_push($toReturn, $one);
+            }
+
             if ($one->From != $reader) {
                 $one->update([
                     'ReadStatus' => true,
@@ -100,14 +110,16 @@ class ChatClient
             }
         }
 
-        return $all;
+        return $toReturn;
     }
 
-    public static function isRequestedToEnd($threadId){
+    public static function isRequestedToEnd($threadId)
+    {
         return Thread::find($threadId)->RequestForEnd;
     }
 
-    public static function defaultGoodbye($threadId){
+    public static function defaultGoodbye($threadId)
+    {
         $message = new Message();
 
         $message->Id = '-1';
