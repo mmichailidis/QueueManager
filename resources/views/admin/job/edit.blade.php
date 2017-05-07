@@ -12,25 +12,32 @@
 
                     {!! Form::model($job, ['route' => ['admin.job.update', $job->Id], 'method' => 'PUT']) !!}
 
-                    {{ Form::label('Name', 'Όνομα:') }}
+                    {{ Form::label('Name', 'Θέση εργασίας:') }}
                     {{ Form::text('Name', null, ["class" => 'form-control input-lg']) }}
                     <br>
-                    {{ Form::label('IsByName', 'IsByName:') }}
-                    {{ Form::text('IsByName', null, ["class" => 'form-control input-lg']) }}
-                    <br>
-                    {{ Form::label('LastNumber', 'Τελευταίος αριθμός:') }}
-                    {{ Form::text('LastNumber', null, ["class" => 'form-control input-lg']) }}
+                    {{ Form::label('IsByName', 'Απαιτείται επαλήθευση:') }}
+                    <select name="IsByName" title="IsByName" class="form-control input-lg">
+                        <option value="1" {{ $job->IsByName == 0 ? 'selected' : '' }}>Όχι</option>
+                        <option value="2" {{ $job->IsByName == 1 ? 'selected' : '' }}>Ναι</option>
+                    </select>
                     <br>
                     {{ Form::label('TypeOfJob', 'Είδος εργασίας:') }}
-                    {{ Form::text('TypeOfJob', null, ["class" => 'form-control input-lg']) }}
+                    <select name="TypeOfJob" title="TypeOfJob" class="form-control input-lg">
+                        <option value="1" {{ $job->TypeOfJob == 1 ? 'selected' : '' }}>Προσωπική Διεπαφή</option>
+                        <option value="2" {{ $job->TypeOfJob == 2 ? 'selected' : '' }}>Ηλεκτρονική Βοήθεια</option>
+                    </select>
                     <br>
-                    {{ Form::label('AverageWaitingTime', 'Μέσος αριθμός αναμονής:') }}
-                    {{ Form::text('AverageWaitingTime', null, ["class" => 'form-control input-lg']) }}
-                    <br>
-                    {{ Form::submit('Αποθήκευση', ['class' => 'btn btn-success btn-block']) }}
+                    {{ Form::submit('Αποθήκευση', ['class' => 'btn btn-success btn-block btn-lg']) }}
 
                     {!! Form::close() !!}
-
+                    <a href="{{ route('admin.job.index') }}" class="btn btn-primary btn-block btn-md" style="margin-top: 10px;"><span class="glyphicon glyphicon-arrow-left">Πίσω</span></a>
+                    <div class="row">
+                        <div class="col-md-12 center" style="margin-top: 10px;">
+                            {!! Form::open(['route' => ['admin.job.destroy', $job->Id], 'method' => 'DELETE']) !!}
+                                {{ Form::submit('Διαγραφη', ['class' => 'btn btn-danger btn-block']) }}
+                            {!! Form::close() !!}
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -39,9 +46,4 @@
 
 
 @endsection
-{{--=======
 
-{{ Form::submit('Save Changes', ['class' => 'btn btn-success btn-block']) }}
-
-{!! Form::close() !!}
->>>>>>> 068de03a21dd60c1c8f346188a480b9c6e389338--}}

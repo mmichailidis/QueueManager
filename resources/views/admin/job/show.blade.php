@@ -1,29 +1,33 @@
 @extends('layouts.app')
-@section('title' , '| Eργαζόμενοι')
+@section('title' , '| Eργασία Εργαζομένου')
 @section('content')
     <br><br>
-    <h2 style="margin-left:70px;">Εργασίες</h2>
+    <h2 style="margin-left:70px;">Eργασία Εργαζομένου</h2>
     <div class="container">
+        <div class="row">
+            <div class="col-md-3 col-md-offset-9" style="margin-bottom: 10px">
+                <a href="{{ route('admin.job.index') }}" class="btn btn-block btn-primary"><span class="glyphicon glyphicon-arrow-left"> Πίσω</span></a>
+            </div>
+        </div>
         <div class="row clearfix">
             <div class="col-md-12 table-responsive">
                 <table class="table table-bordered table-hover table-sortable" id="tab_logic">
                     <thead>
                     <tr>
                         <th class="text-center">
-                            Όνομα
+                            Θέση εργασίας
                         </th>
                         <th class="text-center">
                             Απαιτείται επαλήθευση
                         </th>
                         <th class="text-center">
-                            Κατάσταση αριθμού
+                            Τρέχων αριθμός εξυπηρέτησης
                         </th>
                         <th class="text-center">
-                            Τρέχων αριθμός
+                            Έιδος εργασίας
                         </th>
-
                         <th class="text-center">
-                            Είδος εργασίας
+                            Μέσος χρόνος αναμονής
                         </th>
                     </tr>
                     </thead>
@@ -39,10 +43,10 @@
                             {{$job->LastNumber}}
                         </td>
                         <td data-name="sel">
-                            {{$job->VarificationRequired}}
+                            {{\App\Service\ToS::translateToGreek($job->TypeOfJob)}}
                         </td>
                         <td data-name="sel">
-                            {{$job->TypeOfJob}}
+                            {{$job->AverageWaitingTime}}
                         </td>
                     </tr>
                     </tbody>

@@ -29,7 +29,7 @@
                     <li><a href="{{route('contact.about')}}">Σχετικά</a></li>
                     <li><a href="{{route('contact.index')}}">Επικοινωνία</a></li>
                 @if (Auth::guest())
-                    <li><a href="{{route('auth.login')}}">Login</a></li>
+                    <li><a href="{{route('auth.login')}}">Σύνδεση</a></li>
                     <li><a href="{{route('auth.register')}}"><p class="navbar-btn"><button type="button" class="btn btn-success">Εγγραφή <span class="glyphicon glyphicon-log-in"></span></button> &nbsp;</p></a></li>
                 @else
                     @if(\App\Http\Controllers\Helpers::isAdmin())
@@ -52,7 +52,7 @@
                         </a>
 
                         <ul class="dropdown-menu" role="menu">
-                            <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
+                            <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Αποσύνδεση</a></li>
                         </ul>
                     </li>
                 @endif
