@@ -19,6 +19,7 @@ $this->group(['middleware' => 'auth'], function () {
             $this->post('inner/number', ['as' => 'employee.getNumber', 'uses' => 'EmployeeController@getNumber']);
             $this->get('inner/chat', ['as' => 'employee.getChat', 'uses' => 'EmployeeController@getChatHistory']);
             $this->post('inner/chat', ['as' => 'employee.post', 'uses' => 'EmployeeController@postMessage']);
+            $this->post('/done', ['as' => 'employee.done','uses' => 'EmployeeController@workDone']);
 
 //            $this->get('inner/number',['as' => 'employee.getNumber' , 'uses' => 'EmployeeController@getNumber']); //TEST ROUTE
 //            $this->get('inner/chat',['as' => 'employee.getChat' , 'uses' => 'EmployeeController@getChatHistory']); //TEST ROUTE
@@ -68,17 +69,20 @@ $this->group(['middleware' => 'auth'], function () {
         $this->get('ticket/{ticketId}', ['as' => 'member.ticket.show', 'uses' => 'MemberController@show']);
         $this->delete('ticket/{ticketId}', ['as' => 'member.ticket.destroy', 'uses' => 'MemberController@destroy']);
 
+        $this->get('ticketError',['as' => 'member.errorOnTicket', 'uses' => 'ErrorController@ticketError']);
+
         $this->get('/', ['as' => 'member.profile', 'uses' => 'MemberController@myProfile']);
         $this->get('/edit', ['as' => 'member.edit', 'uses' => 'MemberController@edit']);
         $this->put('/', ['as' => 'member.update', 'uses' => 'MemberController@update']);
+
+        $this->group(['prefix' => 'chat'], function () {
+            $this->get('/', ['as' => 'member.chat.login', 'uses' => 'MemberController@login']);
+            $this->delete('/', ['as' => 'member.chat.logout', 'uses' => 'MemberController@logout']);
+
+            $this->get('/feed', ['as' => 'member.chat.feed', 'uses' => 'MemberController@getChatHistory']); //API
+            $this->post('/post', ['as' => 'member.chat.post', 'uses' => 'MemberController@postMessage']); //API
+        });
     });
-//    $this->group(['prefix' => '/show/{categoryName}/{companyName}'], function () {
-//        $this->get('/chat', ['as' => 'company.chat', 'uses' => 'ChatController@index']);
-//        $this->get('/chat/{threadId}', ['as' => 'chat.fetch', 'uses' => 'ChatController@fetch']);
-//        $this->post('/chat', ['as' => 'chat.send', 'uses' => 'ChatController@send']);
-//        $this->post('/chat/requestThread', ['as' => 'chat.create', 'uses' => 'ChatController@createThread']);
-//        $this->delete('/chat/{threadId}', ['as' => 'chat.destroy', 'uses' => 'ChatController@destroyThread']);
-//    });
 });
 
 $this->get('contact', ['as' => 'contact.index', 'uses' => 'ContactController@index']);

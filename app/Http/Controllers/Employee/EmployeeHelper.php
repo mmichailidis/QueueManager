@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Employee;
 
 use App\Employee;
+use App\EmployeeTimer;
 use App\Job;
+use App\Member;
 use App\User;
 use Illuminate\Support\Facades\Auth;
 
@@ -36,5 +38,21 @@ class EmployeeHelper
             'name' => $user->name,
             'email' => $user->email,
         ];
+    }
+
+    static function myJobsTimer(){
+        $query  = [ 'EmployeeId' => self::getEmployee()->Id , 'IsFinalized' => false];
+
+        $result = EmployeeTimer::where($query)->first();
+
+        return $result != null ? [ 'result' => $result , 'status' => true] : ['status' => false];
+    }
+
+    static function getMemberName($memberId) {
+        return User::find(Member::find($memberId)->UserId)->name;
+    }
+
+    static function requestNext(){
+
     }
 }
