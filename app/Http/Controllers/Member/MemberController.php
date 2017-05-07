@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Member;
 
+use App\Employee;
+use App\Job;
 use App\Service\ChatClient;
 use App\Service\Client;
 use Illuminate\Http\Request;
@@ -41,7 +43,7 @@ class MemberController extends Controller
     public function myProfile()
     {
         return view('member.profile')
-            ->with('tickets',MemberHelper::myTickets())
+            ->with('tickets', MemberHelper::myTickets())
             ->with('member', MemberHelper::getMember())
             ->with('name', MemberHelper::myName())
             ->with('email', MemberHelper::myEmail());
@@ -53,7 +55,12 @@ class MemberController extends Controller
             return redirect()->route('categories.index');
         }
 
-        return view('member.ticket.show')->with('ticket', MemberHelper::getTicket($ticketId));
+        $job = Job::find(MemberHelper::getTicket($ticketId)->JobId);
+
+        return view('member.ticket.show')
+            ->with('ticket', MemberHelper::getTicket($ticketId))
+            ->with('jobAverageTime', $job->AverageWaitingTime)
+            ->with('jobCurrentNumber', $job->LastNumber);
     }
 
     public function destroy($ticketId)
@@ -62,9 +69,9 @@ class MemberController extends Controller
             return redirect()->route('categories.index');
         }
 
-        $this->clientService->discardTicket($ticketId);
+        $this->clientService->discardTicket($ticketId,true);
 
-        return view('member.profile');
+        return redirect()->route('member.profile');
     }
 
     public function edit()
@@ -136,7 +143,7 @@ class MemberController extends Controller
         } else {
             return [
                 'status' => 'ok',
-                'data' => ChatClient::push($threadId,ChatClient::$MEMBER,$request->input('body'))
+                'data' => ChatClient::push($threadId, ChatClient::$MEMBER, $request->input('body'))
             ];
         }
     }

@@ -12,6 +12,7 @@ use App\Services\ClientTimers;
 use App\Services\Domain\Status;
 use App\Services\Domain\TicketHolder;
 use App\Services\ToS;
+use App\Verification;
 use Carbon\Carbon;
 
 class Client
@@ -330,7 +331,7 @@ class Client
             'MemberId' => $memberId
         ];
 
-        return Company::where($query)->first() != null;
+        return Verification::where($query)->first() != null;
     }
 
     /**

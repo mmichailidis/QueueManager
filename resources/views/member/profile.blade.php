@@ -5,7 +5,7 @@
     {{--{{ dd($data, $jobs) }}--}}
     {{--IsOnline, Se poio job einai (apo JobId), CurrentNumber, NumberStatus--}}
     <br><br>
-    <h2 style="margin-left:70px;">Εργαζόμενοι</h2>
+    <h2 style="margin-left:70px;">Το προφίλ μου</h2>
     <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
     <div class="container">
         <div class="row clearfix">
@@ -14,10 +14,16 @@
                     <thead>
                     <tr>
                         <th class="text-center">
-                            TotalReservations
+                            Συνολικές κρατήσεις
                         </th>
                         <th class="text-center">
-                            UnattendedReservations
+                            Απουσίες από τις κρατησεις
+                        </th>
+                        <th class="text-center">
+                            Όνομα
+                        </th>
+                        <th class="text-center">
+                            Email
                         </th>
                     </tr>
                     </thead>
@@ -43,6 +49,10 @@
                     </tr>
                     </tbody>
                 </table>
+                <a href="{{route('member.edit')}}" class="btn btn-success btn-md" style="margin-left: 1026px;">
+                    <span class="glyphicon glyphicon-wrench"></span> Επεξεργασία
+                </a>
+
 
                 <table class="table table-bordered table-hover table-sortable" id="tab_logic">
                     <thead>
@@ -54,7 +64,7 @@
                             Ώρα
                         </th>
                         <th class="text-center">
-                            Δες
+                            Προβολή
                         </th>
                         <th class="text-center">
                             Διαγραφή
@@ -68,13 +78,22 @@
                                 {{$ticket->Number}}
                             </td>
                             <td data-name="Time">
-                                {{$ticket->Time}}
+                                {{\App\Service\TimeConverter::fromUnix($ticket->Time)}}
                             </td>
                             <td data-name="Go">
-                                route('member.ticket.show' , $ticket->Id)
+                                <a href="{{route('member.ticket.show' , $ticket->Id)}}" class="btn btn-info btn-md">
+                                    <span class="glyphicon glyphicon-new-window"></span> Προβολή
+                                </a>
                             </td>
                             <td data-name="Del">
-                                route('member.ticket.destroy' , $ticket->Id)
+                                {{--<a href="{{route('member.ticket.destroy' , $ticket->Id) , ["method" => "DELETE"] }}"--}}
+                                   {{--class="btn btn-info btn-md">--}}
+                                    {{--<span class="glyphicon glyphicon-trash"></span> Διαγραφή--}}
+                                {{--</a>--}}
+                                {!! Form::open(['route' => ['member.ticket.destroy', $ticket->Id], 'method' => 'DELETE']) !!}
+                                {{ Form::submit('Διαγραφή', ['class' => 'btn btn-info btn-md']) }}
+                                {!! Form::close() !!}
+
                             </td>
                         </tr>
                     @endforeach
