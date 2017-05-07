@@ -2,28 +2,26 @@
 
 namespace App\Http\Controllers\Member;
 
+use App\Service\ChatClient;
+use App\Service\Client;
 use Illuminate\Http\Request;
 
-use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
 class MemberController extends Controller
 {
 
-    /**
-     * @var ClientService
-     */
     private $clientService;
 
-//    /**
-//     * MemberController constructor.
-//     * @param ClientService $clientService
-//     */
-//    public function __construct(ClientService $clientService)
-//    {
-//        $this->clientService = $clientService;
-//    }
+    /**
+     * MemberController constructor.
+     * @param Client $clientService
+     */
+    public function __construct(Client $clientService)
+    {
+        $this->clientService = $clientService;
+    }
 
     public function requestTicket(Request $request)
     {
@@ -64,7 +62,7 @@ class MemberController extends Controller
             return redirect()->route('categories.index');
         }
 
-//        $this->clientService->discardTicket($ticketId);
+        $this->clientService->discardTicket($ticketId);
 
         return view('member.profile');
     }
@@ -95,5 +93,63 @@ class MemberController extends Controller
     }
 
 
+    /**
+     * A button with "check chat request" can solve this problem.
+     * It support ONLY 1 member
+     */
+    public function login()
+    {
+        return view('member.chat')
+            ->with('data', $this->getChatHistory());
+    }
+
+    /*
+     * API
+     */
+    public function getChatHistory()
+    {
+        $me = MemberHelper::getMember();
+
+        $threadId = ChatClient::getThreadId(['MemberId' => $me->Id]);
+
+        if ($threadId == ChatClient::$ERROR) {
+            return ['status' => ChatClient::$ERROR];
+        } else {
+            return [
+                'status' => 'ok',
+                'data' => ChatClient::pull($threadId, ChatClient::$MEMBER)
+            ];
+        }
+    }
+
+    /*
+     * API
+     */
+    public function postMessage(Request $request)
+    {
+        $me = MemberHelper::getMember();
+
+        $threadId = ChatClient::getThreadId(['MemberId' => $me->Id]);
+
+        if ($threadId == ChatClient::$ERROR) {
+            return ['status' => ChatClient::$ERROR];
+        } else {
+            return [
+                'status' => 'ok',
+                'data' => ChatClient::push($threadId,ChatClient::$MEMBER,$request->input('body'))
+            ];
+        }
+    }
+
+    public function logout()
+    {
+        $me = MemberHelper::getMember();
+
+        $threadId = ChatClient::getThreadId(['MemberId' => $me->Id]);
+
+        ChatClient::requestEnd($threadId);
+
+        return redirect()->route('member.profile');
+    }
 
 }
