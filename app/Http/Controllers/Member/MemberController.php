@@ -41,6 +41,7 @@ class MemberController extends Controller
     public function myProfile()
     {
         return view('member.profile')
+            ->with('tickets',MemberHelper::myTickets())
             ->with('member', MemberHelper::getMember())
             ->with('name', MemberHelper::myName())
             ->with('email', MemberHelper::myEmail());
