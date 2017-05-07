@@ -11,37 +11,41 @@ use App\Http\Controllers\Controller;
 
 class AdminEmployeeController extends Controller
 {
-    public function index() {
+    public function index()
+    {
         $employees = AdminHelper::allEmployees();
         $dataToReturn = [];
-
-        $dataMap = collect($employees)->map(function($employee) use ($dataToReturn) {
+        $dataMap = collect($employees)->map(function ($employee) use ($dataToReturn) {
             return AdminHelper::getEmployeeInfo($employee->Id);
         });
 
-        for ($i = 0 ; $i < count($dataMap) ; $i++) {
+        $i = 1;
+        foreach ($dataMap as $key => $value) {
             $dataToReturn[$i] = [
-                'Employee' => $employees[$i],
-                'Data' => $dataMap[$i],
+                'Employee' => $employees[$key],
+                'Data' => $value,
             ];
+            $i++;
         }
 
         return view('admin.employee.index')
-            ->with('data',$dataToReturn)
-            ->with('jobs',AdminHelper::allJobsAsArray());
+            ->with('data', $dataToReturn)
+            ->with('jobs', AdminHelper::allJobsAsArray());
     }
 
     /**
      * 8elei data gia ton user
      */
-    public function create() {
+    public function create()
+    {
         $employees = AdminHelper::allEmployees();
         return view('admin.employee.create')
             ->with('employees', $employees)
             ->with('jobs', AdminHelper::allJobs());
     }
 
-    public function store(Request $request) {
+    public function store(Request $request)
+    {
         $user = User::create([
             'name' => $request->input('name'),
             'email' => $request->input('email'),
@@ -58,7 +62,8 @@ class AdminEmployeeController extends Controller
         return redirect()->route('admin.employee.show', $employee->Id);
     }
 
-    public function show($id) {
+    public function show($id)
+    {
         $employee = Employee::find($id);
 
         if (!AdminHelper::existInCompany($employee->Id)) {
@@ -66,7 +71,9 @@ class AdminEmployeeController extends Controller
         }
 
         return view('admin.employee.show')
-            ->with('employee', AdminHelper::getEmployeeInfo($employee->Id));
+            ->with('employee', $employee)
+            ->with('jobs', AdminHelper::allJobsAsArray())
+            ->with('data', AdminHelper::getEmployeeInfo($employee->Id));
     }
 //
 //    public function edit($id) {
@@ -96,7 +103,8 @@ class AdminEmployeeController extends Controller
 //        return view('admin.employee.index')->with('employee', AdminHelper::getEmployeeInfo($employee));
 //    }
 
-    public function destroy($id) {
+    public function destroy($id)
+    {
         $employee = Employee::find($id);
 
         if (!AdminHelper::existInCompany($employee->Id)) {
