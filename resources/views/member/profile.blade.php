@@ -66,7 +66,7 @@
                             Προβολή
                         </th>
                         <th class="text-center">
-                           Διαγραφή
+                            Διαγραφή
                         </th>
                     </tr>
                     </thead>
@@ -77,7 +77,7 @@
                                 {{$ticket->Number}}
                             </td>
                             <td data-name="Time">
-                                {{$ticket->Time}}
+                                {{\App\Service\TimeConverter::fromUnix($ticket->Time)}}
                             </td>
                             <td data-name="Go">
                                 <a href="{{route('member.ticket.show' , $ticket->Id)}}" class="btn btn-info btn-md">
@@ -85,9 +85,13 @@
                                 </a>
                             </td>
                             <td data-name="Del">
-                                <a href="{{route('member.ticket.destroy' , $ticket->Id)}}" class="btn btn-info btn-md">
-                                    <span class="glyphicon glyphicon-trash"></span> Διαγραφή
-                                </a>
+                                {{--<a href="{{route('member.ticket.destroy' , $ticket->Id) , ["method" => "DELETE"] }}"--}}
+                                   {{--class="btn btn-info btn-md">--}}
+                                    {{--<span class="glyphicon glyphicon-trash"></span> Διαγραφή--}}
+                                {{--</a>--}}
+                                {!! Form::open(['route' => ['member.ticket.destroy', $ticket->Id], 'method' => 'DELETE']) !!}
+                                {{ Form::submit('Διαγραφή', ['class' => 'btn btn-info btn-md']) }}
+                                {!! Form::close() !!}
                             </td>
                         </tr>
                     @endforeach

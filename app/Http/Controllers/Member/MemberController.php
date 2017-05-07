@@ -64,7 +64,7 @@ class MemberController extends Controller
 
         $this->clientService->discardTicket($ticketId);
 
-        return view('member.profile');
+        return redirect()->route('member.profile');
     }
 
     public function edit()
