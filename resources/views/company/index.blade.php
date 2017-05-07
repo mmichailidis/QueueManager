@@ -37,7 +37,7 @@
                             {{$company->AutoProceedTime}}
                         </td>
                         <td data-name="sel">
-                            {{$company->VerificationRequired}}
+                            {{\App\Service\Translator::forAll($company->VerificationRequired)}}
                         </td>
                     </tr>
 

@@ -17,7 +17,7 @@
                             Όνομα
                         </th>
                         <th class="text-center">
-                            Αυτόματη κίνηση γραμμής
+                            Αυτόματη κίνηση της γραμμής
                         </th>
                         <th class="text-center">
                             Αυτόματη συνέχεια χρόνου
@@ -34,13 +34,13 @@
                                 {{$company->Name}}
                             </td>
                             <td data-name="mail">
-                                {{$company->AutoProceedActivated}}
+                                {{\App\Service\Translator::forAll($company->AutoProceedActivated)}}
                             </td>
                             <td data-name="desc">
                                 {{$company->AutoProceedTime}}
                             </td>
                             <td data-name="sel">
-                                {{$company->VerificationRequired}}
+                                {{\App\Service\Translator::forAll($company->VerificationRequired)}}
                             </td>
                         </tr>
                     @endforeach
@@ -50,5 +50,3 @@
         </div>
     </div>
 @endsection
-
-<!-- na parw fwto -->
