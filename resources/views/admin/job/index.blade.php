@@ -37,7 +37,7 @@
                                 {{$job->Name}}
                             </td>
                             <td data-name="mail">
-                                {{$job->IsByName}}
+                                {{\App\Service\Translator::forAll($job->IsByName)}}
                             </td>
                             <td data-name="desc">
                                 {{$job->LastNumber}}
