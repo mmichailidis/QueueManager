@@ -187,6 +187,8 @@ class Client
 
         $this->updateJobAverageTime($employee);
 
+        Log::info('should update avg time');
+
         $this->discardTicket($ticket->Id);
     }
 
