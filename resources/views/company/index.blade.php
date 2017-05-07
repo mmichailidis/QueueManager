@@ -53,7 +53,7 @@
                                 {!! Form::open(['route' => ['member.request.number'], 'method' => 'POST']) !!}
                                 <td data-name="sel">
                                     {{ Form::hidden('jobId',$job->Id,[ 'id' => 'jobId'])  }}
-                                    {{ Form::submit('Πάρε νούμερο τώρα',  [ 'class'=>"btn btn-default btn-lg active" ] ) }}
+                                    {{ Form::submit('Πάρε νούμερο τώρα',  [ 'class'=>"btn btn-info btn-md active" ] ) }}
                                 </td>
                                 {!! Form::close() !!}
                             @else
