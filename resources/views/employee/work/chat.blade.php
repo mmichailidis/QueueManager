@@ -7,7 +7,6 @@
         <label for="comment">ChatRoom:</label>
         <textarea class="form-control" rows="10" cols="1" id="chatRoom"></textarea>
     </div>
-
     <input type="text" id="message">
     <input type="button" id="post" value="Send"/>
 

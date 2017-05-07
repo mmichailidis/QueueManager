@@ -18,16 +18,18 @@
                         <br>
                         <input type="text" id="name" class="form-control input-lg"/>
                         <br><br>
-                        <div>
-                            <input type=button class="btn btn-primary" id="arrived" value="arrived"/>
-                            <input type="button" class="btn btn-primary" id="neverArrived" value="Never Arrived"/>
-                            <input type="button" class="btn btn-primary" id="done" value="done" disabled/>
-                        </div>
+
+                        <input type=button class="btn btn-primary" id="arrived" value="'Παραδόθηκε"/>
+                        <input type="button" class="btn btn-primary" id="neverArrived" value="Δεν παραδόθηκε ποτέ"/>
+                        <br><br>
+                        <input type="button" class="btn btn-primary btn-block" id="done" value="Ολοκληρώθηκε" disabled/>
+
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+   </div>
+
 
 
 

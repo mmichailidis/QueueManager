@@ -56,7 +56,7 @@
                             </td>
                             <td>
                                 <div class="row">
-                                    <div class="col-md-6 col-md-offset-4">
+                                    <div class="col-md-8 col-md-offset-4">
                                         {!! Form::open(['route' => ['admin.employee.destroy', $employee->Id], 'method' => 'DELETE']) !!}
                                             {{ Form::submit('Διαγραφη', ['class' => 'btn btn-danger btn-block']) }}
                                         {!! Form::close() !!}
