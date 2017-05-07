@@ -64,12 +64,13 @@ $this->group(['middleware' => 'auth'], function () {
         });
     });
 
+    $this->get('ticketError',['as' => 'member.errorOnTicket', 'uses' => 'ErrorController@ticketError']);
+
     $this->group(['namespace' => 'Member', 'prefix' => 'member'], function () {
         $this->post('number', ['as' => 'member.request.number', 'uses' => 'MemberController@requestTicket']);
         $this->get('ticket/{ticketId}', ['as' => 'member.ticket.show', 'uses' => 'MemberController@show']);
         $this->delete('ticket/{ticketId}', ['as' => 'member.ticket.destroy', 'uses' => 'MemberController@destroy']);
 
-        $this->get('ticketError',['as' => 'member.errorOnTicket', 'uses' => 'ErrorController@ticketError']);
 
         $this->get('/', ['as' => 'member.profile', 'uses' => 'MemberController@myProfile']);
         $this->get('/edit', ['as' => 'member.edit', 'uses' => 'MemberController@edit']);
