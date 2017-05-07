@@ -25,6 +25,7 @@
                 url: "{{ route('employee.getNumber') }}",
                 success: function (response) {
                     document.getElementById("currentNumber").value = response['number'];
+{{--                    var a = {{\App\Service\TimeConverter::fromUnix() }};--}}
                     document.getElementById("timer").value = response['timer'];
                     document.getElementById("name").value = response['name'];
                 },
